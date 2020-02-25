@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://eon-starlight.github.io/Blog/</id>
     <title>Eon&apos;s blog</title>
-    <updated>2020-02-25T11:10:06.268Z</updated>
+    <updated>2020-02-25T11:13:02.357Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://eon-starlight.github.io/Blog/"/>
     <link rel="self" href="https://eon-starlight.github.io/Blog/atom.xml"/>
@@ -43,15 +43,15 @@ a[5]=1;
 <ul>
 <li>为什么要这么写，我们来模拟一下。</li>
 <li>首先i=ax.size()也就是五，然后将ax[ax.size-1]也就是ax[1]放进a[i]，具体怎么将字符转成数字百度一下，这里不解释了…<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/5srw6fe9.png" alt="QAQ" loading="lazy"></li>
+<img src="https://eon-starlight.github.io/Blog//post-images/1582629115230.png" alt="" loading="lazy"></li>
 <li>i=4的情况<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/l0udta0l.png" alt="QAQ" loading="lazy"></li>
+<img src="https://eon-starlight.github.io/Blog//post-images/1582629127550.png" alt="" loading="lazy"></li>
 <li>3<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/z58ed6o7.png" alt="QAQ" loading="lazy"></li>
+<img src="https://eon-starlight.github.io/Blog//post-images/1582629136157.png" alt="" loading="lazy"></li>
 <li>2<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/mujxwm3j.png" alt="QAQ" loading="lazy"></li>
+<img src="https://eon-starlight.github.io/Blog//post-images/1582629158832.png" alt="" loading="lazy"></li>
 <li>1，像这样大家就应该明白了，已经很清晰了。<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/59zxgbut.png" alt="QAQ" loading="lazy"></li>
+<img src="https://eon-starlight.github.io/Blog//post-images/1582629172963.png" alt="" loading="lazy"></li>
 <li>读入就是这样，代码：</li>
 </ul>
 <pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
