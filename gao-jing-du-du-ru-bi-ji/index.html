@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>高精度读入【笔记】 | Eon&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://eon-starlight.github.io/Blog//favicon.ico?v=1582629001091">
+<link rel="stylesheet" href="https://eon-starlight.github.io/Blog//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="高精度基本算法的通用读入
+
+在普通实数变量型无法实现大数据运算时，我们会采用高精度来实现计算，我们利用数组来存一个数。要存多大的数就开多大的数组，因为我们用数组的每一个空间来存每一位数的那个数字。
+假如要存12345这个数，要把它放进a[6..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://eon-starlight.github.io/Blog/">
+        <img src="https://eon-starlight.github.io/Blog//images/avatar.png?v=1582629001091" class="site-logo">
+        <h1 class="site-title">Eon&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      666
+    </div>
+    <div class="site-footer">
+      666 | <a class="rss" href="https://eon-starlight.github.io/Blog//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">高精度读入【笔记】</h2>
+            <div class="post-date">2020-02-25</div>
+            
+            <div class="post-content" v-pre>
+              <h3 id="高精度基本算法的通用读入">高精度基本算法的通用读入</h3>
+<ul>
+<li>在普通实数变量型无法实现大数据运算时，我们会采用高精度来实现计算，我们利用数组来存一个数。要存多大的数就开多大的数组，因为我们用数组的每一个空间来存每一位数的那个数字。</li>
+<li>假如要存12345这个数，要把它放进a[6]数组.我们把5放进a[1]，4放进a[2]，…，1放进a[5]。如下：</li>
+</ul>
+<pre><code class="language-cpp">a[1]=5;
+a[2]=4;
+a[3]=3
+a[4]=2;
+a[5]=1;
+//现在a数组变成了{5,4,3,2,1}，a[i]就表示第i位
+</code></pre>
+<ul>
+<li>我们不会把数字一位一位读入，而是选择用字符串一口气读入，然后就可以知道长度（.size()）就可以用for循环将字符串转成数组。</li>
+<li>先度入：</li>
+</ul>
+<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
+</code></pre>
+<ul>
+<li>然后这理解释一下字符串如何转数组。这里就以12345为例，先看一下代码：</li>
+</ul>
+<pre><code class="language-cpp">	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
+	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
+</code></pre>
+<ul>
+<li>为什么要这么写，我们来模拟一下。</li>
+<li>首先i=ax.size()也就是五，然后将ax[ax.size-1]也就是ax[1]放进a[i]，具体怎么将字符转成数字百度一下，这里不解释了…<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/5srw6fe9.png" alt="QAQ" loading="lazy"></li>
+<li>i=4的情况<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/l0udta0l.png" alt="QAQ" loading="lazy"></li>
+<li>3<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/z58ed6o7.png" alt="QAQ" loading="lazy"></li>
+<li>2<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/mujxwm3j.png" alt="QAQ" loading="lazy"></li>
+<li>1，像这样大家就应该明白了，已经很清晰了。<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/59zxgbut.png" alt="QAQ" loading="lazy"></li>
+<li>读入就是这样，代码：</li>
+</ul>
+<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
+	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
+	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
+</code></pre>
+
+            </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

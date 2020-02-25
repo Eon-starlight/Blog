@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://eon-starlight.github.io/Blog/</id>
     <title>Eon&apos;s blog</title>
-    <updated>2020-02-25T11:03:32.457Z</updated>
+    <updated>2020-02-25T11:10:06.268Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://eon-starlight.github.io/Blog/"/>
     <link rel="self" href="https://eon-starlight.github.io/Blog/atom.xml"/>
@@ -11,44 +11,53 @@
     <icon>https://eon-starlight.github.io/Blog/favicon.ico</icon>
     <rights>All rights reserved 2020, Eon&apos;s blog</rights>
     <entry>
-        <title type="html"><![CDATA[1]]></title>
-        <id>https://eon-starlight.github.io/Blog/1/</id>
-        <link href="https://eon-starlight.github.io/Blog/1/">
+        <title type="html"><![CDATA[高精度读入【笔记】]]></title>
+        <id>https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/</id>
+        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">
         </link>
-        <updated>2020-02-24T04:24:18.000Z</updated>
-        <content type="html"><![CDATA[<p>1</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://eon-starlight.github.io/Blog/hello-gridea/</id>
-        <link href="https://eon-starlight.github.io/Blog/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <updated>2020-02-25T11:06:43.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="高精度基本算法的通用读入">高精度基本算法的通用读入</h3>
+<ul>
+<li>在普通实数变量型无法实现大数据运算时，我们会采用高精度来实现计算，我们利用数组来存一个数。要存多大的数就开多大的数组，因为我们用数组的每一个空间来存每一位数的那个数字。</li>
+<li>假如要存12345这个数，要把它放进a[6]数组.我们把5放进a[1]，4放进a[2]，…，1放进a[5]。如下：</li>
+</ul>
+<pre><code class="language-cpp">a[1]=5;
+a[2]=4;
+a[3]=3
+a[4]=2;
+a[5]=1;
+//现在a数组变成了{5,4,3,2,1}，a[i]就表示第i位
+</code></pre>
+<ul>
+<li>我们不会把数字一位一位读入，而是选择用字符串一口气读入，然后就可以知道长度（.size()）就可以用for循环将字符串转成数组。</li>
+<li>先度入：</li>
+</ul>
+<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
+</code></pre>
+<ul>
+<li>然后这理解释一下字符串如何转数组。这里就以12345为例，先看一下代码：</li>
+</ul>
+<pre><code class="language-cpp">	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
+	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
+</code></pre>
+<ul>
+<li>为什么要这么写，我们来模拟一下。</li>
+<li>首先i=ax.size()也就是五，然后将ax[ax.size-1]也就是ax[1]放进a[i]，具体怎么将字符转成数字百度一下，这里不解释了…<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/5srw6fe9.png" alt="QAQ" loading="lazy"></li>
+<li>i=4的情况<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/l0udta0l.png" alt="QAQ" loading="lazy"></li>
+<li>3<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/z58ed6o7.png" alt="QAQ" loading="lazy"></li>
+<li>2<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/mujxwm3j.png" alt="QAQ" loading="lazy"></li>
+<li>1，像这样大家就应该明白了，已经很清晰了。<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/59zxgbut.png" alt="QAQ" loading="lazy"></li>
+<li>读入就是这样，代码：</li>
+</ul>
+<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
+	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
+	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
+</code></pre>
 ]]></content>
     </entry>
 </feed>
