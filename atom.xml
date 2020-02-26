@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://eon-starlight.github.io/Blog/</id>
     <title>Eon_Starlight&apos;s blog</title>
-    <updated>2020-02-26T05:20:14.269Z</updated>
+    <updated>2020-02-26T05:23:16.005Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://eon-starlight.github.io/Blog/"/>
     <link rel="self" href="https://eon-starlight.github.io/Blog/atom.xml"/>
@@ -18,7 +18,9 @@
         <updated>2020-02-26T05:13:33.000Z</updated>
         <content type="html"><![CDATA[<ul>
 <li>不包括负数、小数</li>
-<li><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><menclose mathbackground="white"><mtext>读入</mtext></menclose></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\colorbox{white}{读入}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2833299999999999em;vertical-align:-0.3em;"></span><span class="mord" style="color:red;"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9833299999999998em;"><span style="top:-2.98333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="stretchy colorbox" style="color:red;height:1.2833299999999999em;background-color:white;"></span></span><span style="top:-3.28333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="mord boxpad" style="color:red;"><span class="mord cjk_fallback" style="color:red;">读</span><span class="mord cjk_fallback" style="color:red;">入</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3em;"><span></span></span></span></span></span></span></span></span></a></li>
+</ul>
+<h3 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h3>
+<ul>
 <li>首先以15463和23521为例数来进行模拟加法，如下图</li>
 <li><img src="https://eon-starlight.github.io/Blog//post-images/1582694109293.png" alt="" loading="lazy"></li>
 <li>由此可见，每一位与每一位直接相加传进答案，也就是：</li>
@@ -69,7 +71,7 @@ asl--;
 </code></pre>
 <ul>
 <li>
-<h4 id="colorredcolorboxwhite输出"><a href="https://www.luogu.com.cn/blog/yx20070829/gao-jing-du-shu-chu-bi-ji-post"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><menclose mathbackground="white"><mtext>输出</mtext></menclose></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\colorbox{white}{输出}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2833299999999999em;vertical-align:-0.3em;"></span><span class="mord" style="color:red;"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9833299999999998em;"><span style="top:-2.98333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="stretchy colorbox" style="color:red;height:1.2833299999999999em;background-color:white;"></span></span><span style="top:-3.28333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="mord boxpad" style="color:red;"><span class="mord cjk_fallback" style="color:red;">输</span><span class="mord cjk_fallback" style="color:red;">出</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3em;"><span></span></span></span></span></span></span></span></span></a></h4>
+<h3 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h3>
 </li>
 <li>完整代码：</li>
 </ul>
