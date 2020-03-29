@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://eon-starlight.github.io/Blog/</id>
     <title>Eon_Starlight&apos;s blog</title>
-    <updated>2020-03-29T10:13:15.397Z</updated>
+    <updated>2020-03-29T10:19:57.199Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://eon-starlight.github.io/Blog/"/>
     <link rel="self" href="https://eon-starlight.github.io/Blog/atom.xml"/>
@@ -10,6 +10,101 @@
     <logo>https://eon-starlight.github.io/Blog/images/avatar.png</logo>
     <icon>https://eon-starlight.github.io/Blog/favicon.ico</icon>
     <rights>All rights reserved 2020, Eon_Starlight&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[ 高精度基本减法【笔记】]]></title>
+        <id>https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/</id>
+        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/">
+        </link>
+        <updated>2020-03-29T10:18:50.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>不包括负数、小数（但可以输出负数）</li>
+<li>
+<h4 id="colorredcolorboxwhite读入"><a href="https://www.luogu.com.cn/blog/yx20070829/gao-jing-du-du-ru-bi-ji-post"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><menclose mathbackground="white"><mtext>读入</mtext></menclose></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\colorbox{white}{读入}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2833299999999999em;vertical-align:-0.3em;"></span><span class="mord" style="color:red;"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9833299999999998em;"><span style="top:-2.98333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="stretchy colorbox" style="color:red;height:1.2833299999999999em;background-color:white;"></span></span><span style="top:-3.28333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="mord boxpad" style="color:red;"><span class="mord cjk_fallback" style="color:red;">读</span><span class="mord cjk_fallback" style="color:red;">入</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3em;"><span></span></span></span></span></span></span></span></span></a></h4>
+</li>
+<li>因为第二个数有可能比第一个数大，也就是有负数答案，所以我们需要判断一下是否是这样的情况。代码实现；</li>
+</ul>
+<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
+if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())//判断
+{
+	swap(ax,bx);
+	pd=1;
+}
+for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
+for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
+//思路就是把a-b变成-(b-a),pd=1代表这种情况，pd=0就不是
+</code></pre>
+<ul>
+<li>整体思路与高精度加法差不多，都是依据小学数学进行模拟</li>
+<li>
+<h4 id="colorredcolorboxwhite高精度加法链接"><a href="https://www.luogu.com.cn/blog/yx20070829/gao-jing-du-ji-ben-jia-fa-bi-ji-post"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><menclose mathbackground="white"><mtext>高精度加法链接</mtext></menclose></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\colorbox{white}{高精度加法链接}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2833299999999999em;vertical-align:-0.3em;"></span><span class="mord" style="color:red;"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9833299999999998em;"><span style="top:-2.98333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="stretchy colorbox" style="color:red;height:1.2833299999999999em;background-color:white;"></span></span><span style="top:-3.28333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="mord boxpad" style="color:red;"><span class="mord cjk_fallback" style="color:red;">高</span><span class="mord cjk_fallback" style="color:red;">精</span><span class="mord cjk_fallback" style="color:red;">度</span><span class="mord cjk_fallback" style="color:red;">加</span><span class="mord cjk_fallback" style="color:red;">法</span><span class="mord cjk_fallback" style="color:red;">链</span><span class="mord cjk_fallback" style="color:red;">接</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3em;"><span></span></span></span></span></span></span></span></span></a></h4>
+</li>
+<li>具体见代码：</li>
+</ul>
+<pre><code class="language-cpp">for(int i=1;i&lt;=max(ax.size(),bx.size());i++)
+{
+	if(a[i]&lt;b[i])
+	{
+		a[i+1]--;//向高位借位，这个绝不能放在ans上跟高精加法的原因一样。
+		a[i]+=10;//借过来的位
+	}
+	ans[i]=a[i]-b[i];
+}
+</code></pre>
+<ul>
+<li>然后要计算答案长度，跟高精加法差不多：</li>
+</ul>
+<pre><code class="language-cpp">asl=max(ax.size(),bx.size());
+while(ans[asl]==0)asl--;
+</code></pre>
+<ul>
+<li>输出需要看一下pd，是否输出负号，所以要加一句代码：</li>
+</ul>
+<pre><code class="language-cpp">if(pd==1)printf(&quot;-&quot;);
+</code></pre>
+<ul>
+<li>
+<h4 id="colorredcolorboxwhite输出"><a href="https://www.luogu.com.cn/blog/yx20070829/gao-jing-du-shu-chu-bi-ji-post"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><menclose mathbackground="white"><mtext>输出</mtext></menclose></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\colorbox{white}{输出}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2833299999999999em;vertical-align:-0.3em;"></span><span class="mord" style="color:red;"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9833299999999998em;"><span style="top:-2.98333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="stretchy colorbox" style="color:red;height:1.2833299999999999em;background-color:white;"></span></span><span style="top:-3.28333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="mord boxpad" style="color:red;"><span class="mord cjk_fallback" style="color:red;">输</span><span class="mord cjk_fallback" style="color:red;">出</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3em;"><span></span></span></span></span></span></span></span></span></a></h4>
+</li>
+<li>最后在输出之后要特判一下，bug原因：</li>
+</ul>
+<pre><code class="language-cpp">if(asl&lt;1)printf(&quot;0&quot;);
+</code></pre>
+<ul>
+<li>完整代码：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//万能库
+using namespace std;
+int a[10087],b[10087],ans[10087],pd,asl;
+string ax,bx;
+int main()
+{
+	cin&gt;&gt;ax&gt;&gt;bx;
+	if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())
+	{
+		swap(ax,bx);
+		pd=1;
+	}
+	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
+	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
+	for(int i=1;i&lt;=max(ax.size(),bx.size());i++)
+	{
+		if(a[i]&lt;b[i])
+		{
+			a[i+1]--;
+			a[i]+=10;
+		}
+		ans[i]=a[i]-b[i];
+	}
+	asl=max(ax.size(),bx.size());
+	while(ans[asl]==0)asl--;
+	if(pd==1)printf(&quot;-&quot;);
+	for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
+	if(asl&lt;1)printf(&quot;0&quot;);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[高精度基本加法【笔记】]]></title>
         <id>https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/</id>
@@ -19,7 +114,7 @@
         <content type="html"><![CDATA[<ul>
 <li>不包括负数、小数</li>
 <li>
-<h4 id="colorredcolorboxwhite读入"><a href="https://www.luogu.com.cn/blog/yx20070829/gao-jing-du-du-ru-bi-ji-post"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><menclose mathbackground="white"><mtext>读入</mtext></menclose></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\colorbox{white}{读入}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2833299999999999em;vertical-align:-0.3em;"></span><span class="mord" style="color:red;"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9833299999999998em;"><span style="top:-2.98333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="stretchy colorbox" style="color:red;height:1.2833299999999999em;background-color:white;"></span></span><span style="top:-3.28333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="mord boxpad" style="color:red;"><span class="mord cjk_fallback" style="color:red;">读</span><span class="mord cjk_fallback" style="color:red;">入</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3em;"><span></span></span></span></span></span></span></span></span></a></h4>
+<h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
 </li>
 <li>首先以15463和23521为例数来进行模拟加法，如下图<br>
 <img src="https://cdn.luogu.com.cn/upload/image_hosting/llfbhk54.png" alt="QAQ" loading="lazy"></li>
@@ -71,7 +166,7 @@ asl--;
 </code></pre>
 <ul>
 <li>
-<h4 id="colorredcolorboxwhite输出"><a href="https://www.luogu.com.cn/blog/yx20070829/gao-jing-du-shu-chu-bi-ji-post"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><menclose mathbackground="white"><mtext>输出</mtext></menclose></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\colorbox{white}{输出}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2833299999999999em;vertical-align:-0.3em;"></span><span class="mord" style="color:red;"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9833299999999998em;"><span style="top:-2.98333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="stretchy colorbox" style="color:red;height:1.2833299999999999em;background-color:white;"></span></span><span style="top:-3.28333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="mord boxpad" style="color:red;"><span class="mord cjk_fallback" style="color:red;">输</span><span class="mord cjk_fallback" style="color:red;">出</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3em;"><span></span></span></span></span></span></span></span></span></a></h4>
+<h4 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h4>
 </li>
 <li>完整代码：</li>
 </ul>
@@ -98,9 +193,8 @@ int main()
 	asl--;
 	for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
 	return 0;
-	QWQ;//这行也忽略
 }
-```】</code></pre>
+</code></pre>
 ]]></content>
     </entry>
     <entry>
