@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title> 高精度基本减法【笔记】 | Eon_Starlight&#39;s blog</title>
+<title> 高精度基本乘法【笔记】 | Eon_Starlight&#39;s blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,15 +18,22 @@
 
 
 
-    <meta name="description" content="
-不包括负数、小数（但可以输出负数）
+    <meta name="description" content="稍微不好理解一点
+
+不包括小数、负数
 
 读入
 
-因为第二个数有可能比第一个数大，也就是有负数答案，所以我们需要判断一下是否是这样的情况。代码实现；
+先看一个例子：356和12相乘：
 
-cin&gt;&gt;ax&gt;&gt;bx;
-if((ax&lt;bx&amp;&am..." />
+由此发现：第i位与第j位相乘，乘积加到第i*j-1位。
+这时候就需要进位了，我们模拟一下进位过程，需要从低位到高位：
+
+then
+
+finally
+
+这就是..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -80,96 +87,98 @@ if((ax&lt;bx&amp;&am..." />
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title"> 高精度基本减法【笔记】</h2>
+            <h2 class="post-title"> 高精度基本乘法【笔记】</h2>
             <div class="post-date">2020-03-29</div>
             
             <div class="post-content" v-pre>
-              <ul>
-<li>不包括负数、小数（但可以输出负数）</li>
+              <h5 id="稍微不好理解一点">稍微不好理解一点</h5>
+<ul>
+<li>不包括小数、负数</li>
 <li>
 <h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
 </li>
-<li>因为第二个数有可能比第一个数大，也就是有负数答案，所以我们需要判断一下是否是这样的情况。代码实现；</li>
+<li>先看一个例子：356和12相乘：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/eqbva1jk.png" alt="QAQ" loading="lazy"></li>
+<li>由此发现：第i位与第j位相乘，乘积加到第i*j-1位。</li>
+<li>这时候就需要进位了，我们模拟一下进位过程，需要从低位到高位：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/5rcm8gw4.png" alt="QAQ" loading="lazy"></li>
+<li>then<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/vf5odps2.png" alt="QAQ" loading="lazy"></li>
+<li>finally<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/mzsfza4e.png" alt="QAQ" loading="lazy"></li>
+<li>这就是整体思路：计算+进位，这种逻辑仔细想想是可行的因为计算时进位最多进8（因为是乘法），进位到i位最多是9再加上最后维护进位时的1最多到18，不会存在多次进位。<br>
+代码：</li>
 </ul>
-<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
-if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())//判断
+<pre><code class="language-cpp">for(int i=1;i&lt;=ax.size();i++)
 {
-	swap(ax,bx);
-	pd=1;
-}
-for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
-for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
-//思路就是把a-b变成-(b-a),pd=1代表这种情况，pd=0就不是
-</code></pre>
-<ul>
-<li>整体思路与高精度加法差不多，都是依据小学数学进行模拟</li>
-<li>
-<h4 id="高精度加法链接"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/">高精度加法链接</a></h4>
-</li>
-<li>具体见代码：</li>
-</ul>
-<pre><code class="language-cpp">for(int i=1;i&lt;=max(ax.size(),bx.size());i++)
-{
-	if(a[i]&lt;b[i])
+	for(int j=1;j&lt;=bx.size();j++)
 	{
-		a[i+1]--;//向高位借位，这个绝不能放在ans上跟高精加法的原因一样。
-		a[i]+=10;//借过来的位
+		ans[i+j-1]+=(a[i]*b[j])%10;
+		ans[i+j]+=(a[i]*b[j])/10;
 	}
-	ans[i]=a[i]-b[i];
+}//计算不解释
+asl=ax.size()*bx.size();//ans长度最大值
+while(ans[asl]==0)asl--;//找出ans没进位前长度（进位后也最大多1位）
+for(int i=1;i&lt;=asl;i++)
+{
+	if(i==asl&amp;&amp;ans[i]&gt;=10)//特判，如果最后一位要进位需要加长asl（ans长度）
+	{
+		ans[i+1]+=ans[i]/10;
+		ans[i]%=10;
+		asl++;
+		break;
+	}
+	if(ans[i]&gt;=10)
+	{
+		ans[i+1]+=ans[i]/10;
+		ans[i]%=10;
+	}
 }
-</code></pre>
-<ul>
-<li>然后要计算答案长度，跟高精加法差不多：</li>
-</ul>
-<pre><code class="language-cpp">asl=max(ax.size(),bx.size());
-while(ans[asl]==0)asl--;
-</code></pre>
-<ul>
-<li>输出需要看一下pd，是否输出负号，所以要加一句代码：</li>
-</ul>
-<pre><code class="language-cpp">if(pd==1)printf(&quot;-&quot;);
 </code></pre>
 <ul>
 <li>
 <h4 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h4>
 </li>
-<li>最后在输出之后要特判一下，bug原因：</li>
+<li>贴完整代码：</li>
 </ul>
-<pre><code class="language-cpp">if(asl&lt;1)printf(&quot;0&quot;);
-</code></pre>
-<ul>
-<li>完整代码：</li>
-</ul>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//万能库
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
-int a[10087],b[10087],ans[10087],pd,asl;
+int a[2001],b[2001],ans[4000001],pd,asl;
 string ax,bx;
 int main()
 {
 	cin&gt;&gt;ax&gt;&gt;bx;
-	if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())
-	{
-		swap(ax,bx);
-		pd=1;
-	}
 	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
 	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
-	for(int i=1;i&lt;=max(ax.size(),bx.size());i++)
+	for(int i=1;i&lt;=ax.size();i++)
 	{
-		if(a[i]&lt;b[i])
+		for(int j=1;j&lt;=bx.size();j++)
 		{
-			a[i+1]--;
-			a[i]+=10;
+			ans[i+j-1]+=(a[i]*b[j])%10;
+			ans[i+j]+=(a[i]*b[j])/10;
 		}
-		ans[i]=a[i]-b[i];
 	}
-	asl=max(ax.size(),bx.size());
+	asl=ax.size()*bx.size();
 	while(ans[asl]==0)asl--;
-	if(pd==1)printf(&quot;-&quot;);
-	for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
-	if(asl&lt;1)printf(&quot;0&quot;);
+	for(int i=1;i&lt;=asl;i++)
+	{
+		if(i==asl&amp;&amp;ans[i]&gt;=10)
+		{
+			ans[i+1]+=ans[i]/10;
+			ans[i]%=10;
+			asl++;
+			break;
+		}
+		if(ans[i]&gt;=10)
+		{
+			ans[i+1]+=ans[i]/10;
+			ans[i]%=10;
+		}
+	}
+	for(int i=asl;i&gt;=1;i--)printf(&quot;%d&quot;,ans[i]);
     return 0;
 }
+
 </code></pre>
 
             </div>
@@ -177,9 +186,9 @@ int main()
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/">
+                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/">
                   <h3 class="post-title">
-                    高精度基本加法【笔记】
+                     高精度基本减法【笔记】
                   </h3>
                 </a>
               </div>
