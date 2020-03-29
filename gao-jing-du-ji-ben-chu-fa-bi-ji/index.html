@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title> 高精度基本除法【笔记】 | Eon_Starlight&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://eon-starlight.github.io/Blog//favicon.ico?v=1585484713720">
+<link rel="stylesheet" href="https://eon-starlight.github.io/Blog//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+咳咳，推敲了几个小时的战斗结果，不包括小数、负数（输出商和余数）
+
+读入
+
+首先讲解思路
+商是什么，就是a能减b多少次对吧
+但因为采用纯循环高精度减法会太慢，所以我们将被除数与除数高位对齐接着循环减法并计数存到另一数组（前提是被除数大于除..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://eon-starlight.github.io/Blog/">
+        <img src="https://eon-starlight.github.io/Blog//images/avatar.png?v=1585484713720" class="site-logo">
+        <h1 class="site-title">Eon_Starlight&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://eon-starlight.github.io/Blog/eon-de-keng/" class="site-nav">
+            Eon_Starlight的主页
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      杀不死你的，终会使你更强大
+    </div>
+    <div class="site-footer">
+      “但是”之前的话，都是毫无意义的 | <a class="rss" href="https://eon-starlight.github.io/Blog//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title"> 高精度基本除法【笔记】</h2>
+            <div class="post-date">2020-03-29</div>
+            
+            <div class="post-content" v-pre>
+              <ul>
+<li>咳咳，推敲了几个小时的战斗结果，不包括小数、负数（输出商和余数）</li>
+<li>
+<h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
+</li>
+<li>首先讲解思路</li>
+<li>商是什么，就是a能减b多少次对吧</li>
+<li>但因为采用纯循环高精度减法会太慢，所以我们将<strong>被除数与除数高位对齐接着循环减法并计数存到另一数组（前提是被除数大于除数）</strong></li>
+<li>减到最后被除数小于除数的时候，原本的被除数就变成了余数</li>
+<li>还是找两个例数1432和12，存起来是这样的：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/q2ruay3g.png" alt="QAQ" loading="lazy"></li>
+<li>然后我们将b数组用移位函数与a数组对齐：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/mmbqaas5.png" alt="QAQ" loading="lazy"></li>
+<li>接着我们用循环减法模拟：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/kxxq98jm.png" alt="QAQ" loading="lazy"></li>
+<li>然后将b数组降位，再次循环减法：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/jl03hpga.png" alt="QAQ" loading="lazy"></li>
+<li>继续；<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/elctaqc0.png" alt="QAQ" loading="lazy"></li>
+<li>最后变成这样：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/jlrnmvja.png" alt="QAQ" loading="lazy"></li>
+<li>现在答案就是ans，余数就为a。现在看一下代码实现。</li>
+<li>开几个变量不用说了</li>
+</ul>
+<pre><code class="language-cpp">int a[1000001],b[1000001],ans[1000001],tmp[1000001],al,bl,asl,tl;//被除数、除数、商、辅助数组、接着是几个存长度的
+string ax,bx;
+</code></pre>
+<ul>
+<li>第一步读入</li>
+</ul>
+<pre><code class="language-cpp">	cin&gt;&gt;ax&gt;&gt;bx;
+	for(int i=1;i&lt;=ax.size();i++)a[i]=ax[ax.size()-i]-'0';
+	for(int i=1;i&lt;=bx.size();i++)b[i]=bx[bx.size()-i]-'0';
+	al=ax.size();
+	bl=bx.size();
+    asl=al-bl+1;//商的最长长度
+</code></pre>
+<ul>
+<li>接着我们要从asl开始向下循环，为了让数组对齐，具体见代码</li>
+</ul>
+<pre><code class="language-cpp">	for(int i=asl;i&gt;0;i--)
+	{
+        memset(tmp,0,sizeof(tmp));//清空辅助数组
+        for(int j=1;j&lt;=bl;j++)tmp[j+i-1]=b[j];//将除数与最高位与被除数对齐并复制到辅助数组里
+    	tl=bl+i-1;//改一下长度
+    	int pd=0;//这里要判断被除数与辅助的大小
+    	if(al&gt;tl)pd=1;//比长度
+    	if(al&lt;tl)pd=-1;
+    	for(int j=al;j&gt;0;j--)//若长度相同就按位比
+		{
+			if(a[j]&gt;tmp[j])pd=1;
+			if(a[j]&lt;tmp[j])pd=-1;
+		}
+        //pd为0就是相等，-1是tmp大，1是a大
+        while(pd&gt;=0)//循环减法，条件保证能减
+		{
+			ans[i]++;//先计数
+			if(pd==0)al=0;//如果相等就直接长度为0就OK了
+    		else//否则就减，高精减法不懂见下方链接
+    		{
+        		for(int j=1;j&lt;=al;j++)
+        		{
+        		    if(a[j]&lt;b[j])
+					{
+						a[j+1]--;
+						a[j]+=10;
+					}
+    		        if(a[j]&gt;=b[j])a[j]-=b[j];
+    		    }
+    		    while((a[al]==0)&amp;&amp;(al&gt;0))al--;
+    		}
+			pd=0;//减完再次判断
+    		if(al&gt;tl)pd=1;
+    		if(al&lt;tl)pd=-1;
+    		for(int j=al;j&gt;0;j--)
+			{
+				if(a[j]&gt;tmp[j])pd=1;
+				if(a[j]&lt;tmp[j])pd=-1;
+			}
+		}
+    }
+</code></pre>
+<ul>
+<li>最后需要控0（去掉商高位的0）</li>
+</ul>
+<pre><code class="language-cpp">    while((ans[asl]==0)&amp;&amp;(asl&gt;0))asl--;
+</code></pre>
+<ul>
+<li>输出就判断一下长度，如果为0就输出0</li>
+</ul>
+<pre><code class="language-cpp">	if(asl==0)printf(&quot;0&quot;);
+	else
+	{
+    	for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
+    }
+	printf(&quot; &quot;);//商和余数中间的空格
+	if(al==0)printf(&quot;0&quot;);
+	else
+	{
+    	for(int i=al;i&gt;0;i--)printf(&quot;%d&quot;,a[i]);
+    }
+</code></pre>
+<ul>
+<li>全代码</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//万能库
+using namespace std;
+int a[1000001],b[1000001],ans[1000001],tmp[1000001],al,bl,asl,tl;
+string ax,bx;//开变量
+int main()
+{
+    cin&gt;&gt;ax&gt;&gt;bx;//读入不解释
+	for(int i=1;i&lt;=ax.size();i++)a[i]=ax[ax.size()-i]-'0';
+	for(int i=1;i&lt;=bx.size();i++)b[i]=bx[bx.size()-i]-'0';
+	al=ax.size();
+	bl=bx.size();
+    asl=al-bl+1;
+    for(int i=asl;i&gt;0;i--)//重要的部分
+	{
+        memset(tmp,0,sizeof(tmp));//清0
+        for(int j=1;j&lt;=bl;j++)tmp[j+i-1]=b[j];//位移
+    	tl=bl+i-1;
+    	int pd=0;//判断谁大
+    	if(al&gt;tl)pd=1;
+    	if(al&lt;tl)pd=-1;
+    	for(int j=al;j&gt;0;j--)
+		{
+			if(a[j]&gt;tmp[j])pd=1;
+			if(a[j]&lt;tmp[j])pd=-1;
+		}
+        while(pd&gt;=0)//相减计数
+		{
+			ans[i]++;
+			if(pd==0)al=0;
+    		else
+    		{
+        		for(int j=1;j&lt;=al;j++)
+        		{
+        		    if(a[j]&lt;b[j])
+					{
+						a[i+1]--;
+						a[i]+=10;
+					}
+    		        if(a[j]&gt;=b[j])a[j]-=b[j];
+    		    }
+    		    while((a[al]==0)&amp;&amp;(al&gt;0))al--;
+    		}
+			pd=0;
+    		if(al&gt;tl)pd=1;
+    		if(al&lt;tl)pd=-1;
+    		for(int j=al;j&gt;0;j--)
+			{
+				if(a[j]&gt;tmp[j])pd=1;
+				if(a[j]&lt;tmp[j])pd=-1;
+			}
+		}
+    }
+    while((ans[asl]==0)&amp;&amp;(asl&gt;0))asl--;//去掉高位的0
+    if(asl==0)printf(&quot;0&quot;);输出不解释
+	else
+	{
+    	for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
+    }
+	printf(&quot; &quot;);
+	if(al==0)printf(&quot;0&quot;);
+	else
+	{
+    	for(int i=al;i&gt;0;i--)printf(&quot;%d&quot;,a[i]);
+    }
+    return 0;
+}
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-cheng-fa-bi-ji/">
+                  <h3 class="post-title">
+                     高精度基本乘法【笔记】
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
