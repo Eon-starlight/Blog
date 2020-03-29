@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://eon-starlight.github.io/Blog//favicon.ico?v=1585472845167">
+<link rel="shortcut icon" href="https://eon-starlight.github.io/Blog//favicon.ico?v=1585476761139">
 <link rel="stylesheet" href="https://eon-starlight.github.io/Blog//styles/main.css">
 
 
@@ -21,18 +21,13 @@
     <meta name="description" content="
 不包括负数、小数
 
-读入
+读入\color{red}\colorbox{white}{读入}读入​
 
 首先以15463和23521为例数来进行模拟加法，如下图
 
 由此可见，每一位与每一位直接相加传进答案，也就是：
 
-ans[i]=a[i]+b[i];
-//代码实现
-
-但是这没有考虑进位！！QAQ
-
-那要怎么解决..." />
+ans[i]=a[i]+b[..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -42,7 +37,7 @@ ans[i]=a[i]+b[i];
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://eon-starlight.github.io/Blog/">
-        <img src="https://eon-starlight.github.io/Blog//images/avatar.png?v=1585472845167" class="site-logo">
+        <img src="https://eon-starlight.github.io/Blog//images/avatar.png?v=1585476761139" class="site-logo">
         <h1 class="site-title">Eon_Starlight&#39;s blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -92,11 +87,11 @@ ans[i]=a[i]+b[i];
             <div class="post-content" v-pre>
               <ul>
 <li>不包括负数、小数</li>
-</ul>
-<h3 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h3>
-<ul>
-<li>首先以15463和23521为例数来进行模拟加法，如下图</li>
-<li><img src="https://eon-starlight.github.io/Blog//post-images/1582694109293.png" alt="" loading="lazy"></li>
+<li>
+<h4 id="colorredcolorboxwhite读入"><a href="https://www.luogu.com.cn/blog/yx20070829/gao-jing-du-du-ru-bi-ji-post"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><menclose mathbackground="white"><mtext>读入</mtext></menclose></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\colorbox{white}{读入}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2833299999999999em;vertical-align:-0.3em;"></span><span class="mord" style="color:red;"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9833299999999998em;"><span style="top:-2.98333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="stretchy colorbox" style="color:red;height:1.2833299999999999em;background-color:white;"></span></span><span style="top:-3.28333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="mord boxpad" style="color:red;"><span class="mord cjk_fallback" style="color:red;">读</span><span class="mord cjk_fallback" style="color:red;">入</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3em;"><span></span></span></span></span></span></span></span></span></a></h4>
+</li>
+<li>首先以15463和23521为例数来进行模拟加法，如下图<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/llfbhk54.png" alt="QAQ" loading="lazy"></li>
 <li>由此可见，每一位与每一位直接相加传进答案，也就是：</li>
 </ul>
 <pre><code class="language-cpp">ans[i]=a[i]+b[i];
@@ -119,12 +114,12 @@ ans[i]+=a[i]+b[i];
 <h3 id="注意进的位加到ans数组上了正常来说这不对会有解释">注意进的位加到ans数组上了，正常来说这不对，会有解释。</h3>
 </li>
 <li>我们再举个例子13425和15718：<br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582694117940.png" alt="" loading="lazy"></li>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/6k5jlze9.png" alt="QAQ" loading="lazy"></li>
 <li>
 <h3 id="在这个时候会出现问题举个例子就明白了">在这个时候会出现问题，举个例子就明白了。</h3>
 </li>
 <li>15555和14545：<br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582694123657.png" alt="" loading="lazy"></li>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/h1f46plz.png" alt="QAQ" loading="lazy"></li>
 <li>因为我们把进的一位加到ans数组上了，然而我们无法判断ans[i]是否要进位，所以就出现了这种情况。</li>
 <li>为了避免这种情况我们进的位加到a数组里见代码：</li>
 </ul>
@@ -145,32 +140,11 @@ asl--;
 </code></pre>
 <ul>
 <li>
-<h3 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h3>
+<h4 id="colorredcolorboxwhite输出"><a href="https://www.luogu.com.cn/blog/yx20070829/gao-jing-du-shu-chu-bi-ji-post"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><menclose mathbackground="white"><mtext>输出</mtext></menclose></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\colorbox{white}{输出}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2833299999999999em;vertical-align:-0.3em;"></span><span class="mord" style="color:red;"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9833299999999998em;"><span style="top:-2.98333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="stretchy colorbox" style="color:red;height:1.2833299999999999em;background-color:white;"></span></span><span style="top:-3.28333em;"><span class="pstrut" style="height:3.28333em;"></span><span class="mord boxpad" style="color:red;"><span class="mord cjk_fallback" style="color:red;">输</span><span class="mord cjk_fallback" style="color:red;">出</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3em;"><span></span></span></span></span></span></span></span></span></a></h4>
 </li>
 <li>完整代码：</li>
 </ul>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;iostream&gt;
-#include&lt;string&gt;
-#include&lt;cstdio&gt;
-#include&lt;iostream&gt;
-#include&lt;string&gt;
-#include&lt;cstring&gt;
-#include&lt;cmath&gt;
-#include&lt;algorithm&gt;
-#include&lt;map&gt;
-#include&lt;set&gt;
-#include&lt;queue&gt;
-#include&lt;deque&gt;
-#include&lt;limits&gt;
-#include&lt;climits&gt;
-#include&lt;cfloat&gt;
-#include&lt;cstdlib&gt;
-#include&lt;cwchar&gt;
-#include&lt;ctime&gt;
-#include&lt;memory&gt;
-#include&lt;list&gt;//头文件其实不用开这么多，用万能库就行，不过我喜欢这样……
-#define QWQ while(1)puts(&quot;(〃'▽'〃)&quot;)//忽略这行
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//万能库
 using namespace std;
 int a[1000001],b[1000001],ans[1000001],asl;
 string ax,bx;
@@ -195,7 +169,7 @@ int main()
 	return 0;
 	QWQ;//这行也忽略
 }
-</code></pre>
+```】</code></pre>
 
             </div>
             
