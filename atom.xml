@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://eon-starlight.github.io/Blog/</id>
     <title>Eon_Starlight&apos;s blog</title>
-    <updated>2020-03-30T02:15:15.287Z</updated>
+    <updated>2020-03-30T02:20:08.925Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://eon-starlight.github.io/Blog/"/>
     <link rel="self" href="https://eon-starlight.github.io/Blog/atom.xml"/>
@@ -11,12 +11,47 @@
     <icon>https://eon-starlight.github.io/Blog/favicon.ico</icon>
     <rights>All rights reserved 2020, Eon_Starlight&apos;s blog</rights>
     <entry>
-        <title type="html"><![CDATA[s]]></title>
-        <id>https://eon-starlight.github.io/Blog/s/</id>
-        <link href="https://eon-starlight.github.io/Blog/s/">
+        <title type="html"><![CDATA[高精度整合]]></title>
+        <id>https://eon-starlight.github.io/Blog/gao-jing-du-zheng-he/</id>
+        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-zheng-he/">
         </link>
-        <updated>2020-03-30T02:14:56.000Z</updated>
-        <content type="html"><![CDATA[<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>b</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">abc</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">b</span><span class="mord mathdefault">c</span></span></span></span></p>
+        <updated>2020-03-30T02:16:35.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="高精度代码综合讲解">高精度代码综合讲解</h1>
+<ul>
+<li>
+<h2 id="读入不解释">读入不解释</h2>
+</li>
+<li>
+<h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
+</li>
+<li>
+<h2 id="四则运算">四则运算</h2>
+</li>
+<li>
+<h4 id="高精度加法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/">{高精度加法</a></h4>
+</li>
+<li>
+<h4 id="高精度减法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/">{高精度减法</a></h4>
+</li>
+<li>
+<h4 id="高精度乘法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-cheng-fa-bi-ji/">高精度乘法</a></h4>
+</li>
+<li>
+<h4 id="高精度除法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-chu-fa-bi-ji/">高精度除法</a></h4>
+</li>
+</ul>
+<h6 id="赠品大雾">赠品（大雾</h6>
+<ul>
+<li>
+<h4 id="高精度比较"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-bi-jiao-bi-ji/">高精度比较</a></h4>
+</li>
+<li>
+<h2 id="输出不解释">输出不解释</h2>
+</li>
+<li>
+<h4 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h4>
+</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
