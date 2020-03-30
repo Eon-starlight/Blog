@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>高精度基本比较【笔记】 | Eon_Starlight&#39;s blog</title>
+<title>STL中的&lt;map&gt;【笔记】 | Eon_Starlight&#39;s blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,18 +18,16 @@
 
 
 
-    <meta name="description" content="极水的一篇……
+    <meta name="description" content="
 
-不包括小数、负数（所以没难度）
-读入不解释
+map是什么？
 
-cin&gt;&gt;ax&gt;&gt;bx;
-//读入两个字符串
+map是一个可以以自定义任意类型的下标及存储类型的数组。
+实际上map容器是一个键值对key-value的映射。其内部实现是一棵一key为关键码的红黑树。map的key和value可以是任意类型。
+声明：
 
-
-比较不解释：
-
-if((ax&lt;bx&amp;&amp;ax.size()==bx.size())..." />
+头文件：
+..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -83,39 +81,66 @@ if((ax&lt;bx&amp;&amp;ax.size()==bx.size())..." />
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">高精度基本比较【笔记】</h2>
+            <h2 class="post-title">STL中的&lt;map&gt;【笔记】</h2>
             <div class="post-date">2020-03-30</div>
             
             <div class="post-content" v-pre>
-              <h5 id="极水的一篇">极水的一篇……</h5>
+              <ul>
+<li>
+<h4 id="map是什么">map是什么？</h4>
+</li>
+<li>map是一个可以以自定义任意类型的下标及存储类型的数组。</li>
+<li>实际上map容器是一个键值对key-value的映射。其内部实现是一棵一key为关键码的红黑树。map的key和value可以是任意类型。</li>
+<li>声明：
 <ul>
-<li>不包括小数、负数（所以没难度）</li>
-<li>读入不解释</li>
+<li>头文件：</li>
 </ul>
-<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
-//读入两个字符串
+<pre><code class="language-cpp">#include&lt;map&gt;
 </code></pre>
 <ul>
-<li>比较不解释：</li>
+<li>声明：</li>
 </ul>
-<pre><code class="language-cpp">if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())pd=1;
+<pre><code>map&lt;string,int&gt;a;
 </code></pre>
 <ul>
-<li>输出不解释：</li>
+<li>你甚至可以用vector来作为key或value：</li>
 </ul>
-<pre><code class="language-cpp">if(pd==1)cout&gt;&gt;bx;
-else cout&gt;&gt;ax;
-//不是这么简单我还写它干嘛……
+<pre><code>map&lt; vector&lt;int&gt;,int&gt;b;
 </code></pre>
+</li>
+<li>a.size()/a.empty()/a.claer()/a.begin()/a.end()
+<ul>
+<li>作用与<a href="https://www.luogu.com.cn/blog/yx20070829/stl-zhong-di-set-bi-ji-post">set</a>类似，依次为元素个数、判空、清空、首迭代器、尾迭代器。</li>
+</ul>
+</li>
+<li>迭代器
+<ul>
+<li>与set相同，都是“双向访问迭代器”。对map的迭代器解除引用（即+&quot;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>&quot;）得到的是一对key、value。</li>
+</ul>
+</li>
+<li>a.insert(make_pair(x,y))/a.erase(it)/a.erase(make_pair(x,y))
+<ul>
+<li>第一个函数将key x，value y，建立映射，这里补充一下，map可以当成数组使用：a[key]=value，所以这里赋值只需要：a[x]=y;两种方法效果一样</li>
+<li>第二个函数将map a中it指向的pair删除。</li>
+<li>第三个函数将map a中key为x，value为y的元素删除。</li>
+</ul>
+</li>
+<li>a.find(x)
+<ul>
+<li>在map a里寻找key为x的pair（二元组），若找到就返回该pair的迭代器，否则返回a.end()</li>
+</ul>
+</li>
+<li>PS：假如要使用a[x]的值，但之前并未赋值，这时a会自动建立一个以x为key的空value，接着返回，如果遇到大量这种情况就会浪费大量空间及时间，所以在引用之前建议先用a.find()函数寻找后再使用。</li>
+</ul>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-chu-fa-bi-ji/">
+                <a href="https://eon-starlight.github.io/Blog/stl-zhong-de-lesssetgreaterbi-ji/">
                   <h3 class="post-title">
-                     高精度基本除法【笔记】
+                    STL中的&lt;set&gt;【笔记】
                   </h3>
                 </a>
               </div>

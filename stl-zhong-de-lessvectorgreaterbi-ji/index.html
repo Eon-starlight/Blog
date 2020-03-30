@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>STL中的&lt;vector&gt;【笔记】 | Eon_Starlight&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://eon-starlight.github.io/Blog//favicon.ico?v=1585530546362">
+<link rel="stylesheet" href="https://eon-starlight.github.io/Blog//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+
+vector是什么？
+
+一个可以无限延长但只限于尾部插入弹出元素的任意数据类型的数组。
+首先了解如何声明一个vector
+
+头文件：
+
+#include&lt;vector&gt;
+
+
+声明：
+
+vector&lt;int&gt;a;
+..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://eon-starlight.github.io/Blog/">
+        <img src="https://eon-starlight.github.io/Blog//images/avatar.png?v=1585530546362" class="site-logo">
+        <h1 class="site-title">Eon_Starlight&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://eon-starlight.github.io/Blog/eon-de-keng/" class="site-nav">
+            Eon_Starlight的主页
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      杀不死你的，终会使你更强大
+    </div>
+    <div class="site-footer">
+      “但是”之前的话，都是毫无意义的 | <a class="rss" href="https://eon-starlight.github.io/Blog//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">STL中的&lt;vector&gt;【笔记】</h2>
+            <div class="post-date">2020-03-30</div>
+            
+            <div class="post-content" v-pre>
+              <ul>
+<li>
+<h4 id="vector是什么">vector是什么？</h4>
+</li>
+<li>一个可以无限延长但只限于尾部插入弹出元素的任意数据类型的数组。</li>
+<li>首先了解如何声明一个vector
+<ul>
+<li>头文件：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;vector&gt;
+</code></pre>
+<ul>
+<li>声明：</li>
+</ul>
+<pre><code class="language-cpp">vector&lt;int&gt;a;
+</code></pre>
+</li>
+<li>这时就开了一个叫'a'的vector存的是int形的变量，当然也可以改成string或long long以及其他数据类型甚至自己定义的结构体也是可以的。</li>
+<li>接下来就是使用方法了。</li>
+<li>a.size()/a.empty()所有的STL容器都支持
+<ul>
+<li>前者是返回vector的实际长度。</li>
+<li>后者返回一个bool形，表示vector是否为空。</li>
+</ul>
+</li>
+<li>a.clear()
+<ul>
+<li>清空vector</li>
+</ul>
+</li>
+<li>迭代器
+<ul>
+<li>就像指针一样，用'<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>'解除引用</li>
+<li>如何声明（这里的例子为保存int的vector的迭代器）：</li>
+</ul>
+<pre><code class="language-cpp">vector&lt;int&gt;::iterator it;
+//it就是变量名，可以换
+</code></pre>
+<ul>
+<li>如何使用？</li>
+<li>vector的迭代器是“随机访问迭代器”，可以与一个整数相加或相减（类似于指针移动）；也可以另一个迭代器相加或相减（类似于指针相加减）。</li>
+<li>表示迭代器指向的量就<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>it（就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>+迭代器名）</li>
+<li>迭代器与指针的区别：
+<ol>
+<li>cout可以输出指针的值，但是迭代器进行该操作时会报错。因为迭代器返回的是对象引用而不是对象的值，所以cout只能输出迭代器使用&quot;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>&quot;解除引用而不能直接输出其自身。</li>
+<li>指针能指向函数而迭代器不行，迭代器只能指向容器。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>a.begin()/a.end()
+<ul>
+<li>前者返回vector内第一个元素的迭代器，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>a.begin()=a[0]</li>
+<li>后者返回最后一个元素<strong>后边的边界</strong>的迭代器，注意不是返回最后一个元素的迭代器，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>a.end()=a[a.size()]，实际上是越界访问。</li>
+<li>就在这里介绍一下两种遍历vector的方法
+<ol>
+<li>把vector变成数组使用（只有遍历时可用，插入元素不可以）、</li>
+</ol>
+<pre><code class="language-cpp">for(int i=0;i&lt;a.size();i++)printf(&quot;%d &quot;,a[i]);//注意不要越界
+</code></pre>
+<ol start="2">
+<li>把vector变成数组使用（只有遍历时可用，插入元素不可以）、</li>
+</ol>
+<pre><code class="language-cpp">for(vector&lt;int&gt;::iterator it=a.begin();it!=a.end();it++)printf(&quot;%d &quot;,*it);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>a.front()/a.back()
+<ul>
+<li>前者返回vector的第一个元素（不是迭代器了），相当于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>a.begin/a[0]。</li>
+<li>后者返回vector最后一个元素（不是边界了），相当于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>--a.end()和a[a.size()-1]。</li>
+</ul>
+</li>
+<li>a.push_bac(x)k/a.pop_back()
+<ul>
+<li>前者把x插入到vector a的尾部。</li>
+<li>后者将vector a的尾部元素弹掉（删除）</li>
+</ul>
+</li>
+<li>vector在哪里会用到？
+<ul>
+<li>用vector可以代替邻接表存有向图。</li>
+</ul>
+<pre><code class="language-cpp">vector&lt;int&gt;ver[10001],edge[10001];
+void add(int x,int y,int z)//保存从x到y权值为z的有向边
+{
+    vre[x].push_back(y);
+    edge[x].push_back(z);
+    return;
+}
+//遍历所有从x出发的点：
+for(int i=0;i&lt;ver[x].size();i+++)int y=ver[x][i],z=edge[x][i];
+</code></pre>
+</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf171g-mysterious-numbers-2-ti-jie/">
+                  <h3 class="post-title">
+                    Luogu（CF搬运）CF171G 【Mysterious numbers - 2】【题解】
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

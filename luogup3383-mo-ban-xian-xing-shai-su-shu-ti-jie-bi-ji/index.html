@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>LuoguP3383 【【模板】线性筛素数】【题解/笔记】 | Eon_Starlight&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://eon-starlight.github.io/Blog//favicon.ico?v=1585530546362">
+<link rel="stylesheet" href="https://eon-starlight.github.io/Blog//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="题目链接
+
+
+一道算区间素数的题，题意简单。
+
+
+首先我们介绍几种没有优化的筛素数。
+
+第一种，无优化枚举，直接枚举到n-1：
+
+using namespace std;
+//询问一个数，输出一行Yes或No。 
+int n;
+bool p..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://eon-starlight.github.io/Blog/">
+        <img src="https://eon-starlight.github.io/Blog//images/avatar.png?v=1585530546362" class="site-logo">
+        <h1 class="site-title">Eon_Starlight&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://eon-starlight.github.io/Blog/eon-de-keng/" class="site-nav">
+            Eon_Starlight的主页
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      杀不死你的，终会使你更强大
+    </div>
+    <div class="site-footer">
+      “但是”之前的话，都是毫无意义的 | <a class="rss" href="https://eon-starlight.github.io/Blog//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">LuoguP3383 【【模板】线性筛素数】【题解/笔记】</h2>
+            <div class="post-date">2020-03-30</div>
+            
+            <div class="post-content" v-pre>
+              <p><a href="https://www.luogu.com.cn/problem/P3383">题目链接</a></p>
+<ul>
+<li>
+<h3 id="一道算区间素数的题题意简单">一道算区间素数的题，题意简单。</h3>
+</li>
+<li>
+<h4 id="首先我们介绍几种没有优化的筛素数">首先我们介绍几种没有优化的筛素数。</h4>
+</li>
+<li>第一种，无优化枚举，直接枚举到n-1：</li>
+</ul>
+<pre><code class="language-cpp">using namespace std;
+//询问一个数，输出一行Yes或No。 
+int n;
+bool pd=1; 
+int main()
+{
+   	scanf(&quot;%d&quot;,&amp;n);
+   	if(n==1)printf(&quot;No&quot;);//特判。
+   	for(int i=2;i&lt;n;i++)//枚举到n前一个。
+   	{
+		if(n%i==0)
+		{
+			pd=0;
+			break;
+		}
+	}
+	if(pd)printf(&quot;Yes&quot;);
+	else printf(&quot;No&quot;);
+    return 0;
+    QWQ;
+}
+</code></pre>
+<ul>
+<li>稍稍给它优化优化，枚举到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mi>n</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span></span></span></span> ：</li>
+</ul>
+<pre><code class="language-cpp">using namespace std;
+//询问一个数，输出一行Yes或No。 
+int n; 
+bool pd=1; 
+int main()
+{
+   	scanf(&quot;%d&quot;,&amp;n);
+   	if(n==1)printf(&quot;No&quot;);//特判。
+   	for(int i=2;i*i&lt;=n;i++)//这次枚举到根号n，因为根号n到n之间的数都不是n的因数
+   	{
+		if(n%i==0)
+		{
+			pd=0;
+			break;
+		}
+	}
+	if(pd)printf(&quot;Yes&quot;);
+	else printf(&quot;No&quot;);
+    return 0;
+    QWQ;
+}
+</code></pre>
+<ul>
+<li>但是这样按照此题要判断多次，时间复杂度肯定很高是不行滴 <s>试过</s></li>
+<li>接下来再介绍两种高效率区间筛：</li>
+<li>第一种埃拉托斯特尼筛法：</li>
+<li>当需要求某一区间[2,n]内的所有素数时，可以从2开始，对于当前素数p，将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>p</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">p^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>后所有p的倍数筛去每次找到下一个没有被筛到的数就是一个素数。</li>
+<li>代码实现：</li>
+</ul>
+<pre><code class="language-cpp">using namespace std;
+//可以筛出1~x区间中的素数，n次询问，每次询问输出一行Yes或No。 
+int x,n; 
+bool pd[100000001];//1表示非素数，0表示素数。 
+int main()
+{
+   	scanf(&quot;%d%d&quot;,&amp;x,&amp;n);
+   	pd[1]=1;
+   	for(int i=2;i&lt;=x;i++)
+   	{
+		if(!pd[i])//如果没被筛到，就确定为素数，并继续筛
+		{
+			for(int j=2;j*i&lt;=x;j++)pd[j*i]=1;
+		}   
+	}
+	for(int i=1;i&lt;=n;i++)
+	{
+		int h;
+		scanf(&quot;%d&quot;,&amp;h);
+		if(pd[h])printf(&quot;No\n&quot;);
+		else printf(&quot;Yes\n&quot;);
+	}
+    return 0;
+    QWQ;
+}
+</code></pre>
+<ul>
+<li>当然，这种算法并不完美，因为有些合数会被筛两次。</li>
+<li>比如6，会被2筛一次，3一次，为了优化，我们用出了另一种更高效率的区间筛</li>
+<li>欧拉筛！！！（这不是程序代码~）</li>
+</ul>
+<pre><code class="language-cpp">using namespace std;
+//可以筛出1~x区间中的素数，n次询问，每次询问输出一行Yes或No。 
+int x,n,ans[100000001],sum; 
+bool pd[100000001];//1表示非素数，0表示素数。 
+int main()
+{
+   	scanf(&quot;%d%d&quot;,&amp;x,&amp;n);
+   	pd[1]=1;
+   	for(int i=2;i&lt;=x;i++)
+   	{
+		if(!pd[i])ans[++sum]=i;//发现素数就记下来
+		for(int j=1;j&lt;=sum&amp;&amp;i*ans[j]&lt;=x;j++)
+		{
+			pd[ans[j]*i]=1;//标记
+			if(i%ans[j]==0)break;//关键于此，保证每个合数只被筛一次
+		}
+	}
+	for(int i=1;i&lt;=n;i++)
+	{
+		int h;
+		scanf(&quot;%d&quot;,&amp;h);
+		if(!pd[h])printf(&quot;Yes&quot;);
+		else printf(&quot;No&quot;);
+	}
+    return 0;
+    QWQ;
+}
+</code></pre>
+<ul>
+<li>某个合数a=p*b，其中p是a中最小的质数，b为a/p。a要在快筛时被筛掉需要满足其被a中最小的质数p乘以剩下的数b筛掉。每个合数只被它最大的且不等于他自身的因数筛掉。</li>
+<li>我们来模拟一下康康：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/kie7vmvj.png" alt="QAQ" loading="lazy"></li>
+<li>最后放一下完整AC代码，不要抄。</li>
+<li>有注释的：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;set&gt;
+#include&lt;queue&gt;
+#include&lt;deque&gt;
+#include&lt;limits&gt;
+#define QWQ while(1)puts(&quot;(〃'▽'〃)&quot;)
+using namespace std; 
+int x/*范围*/,n/*询问次数*/,ans[100000001]/*ans存素数*/,sum/*sum是筛出来的素数个数，用于存素数方便的的。*/ ;
+bool pd[100000001];//1表示非素数，0表示素数。 
+int main()
+{
+   	scanf(&quot;%d%d&quot;,&amp;x,&amp;n);
+   	pd[1]=1;//特别标一下，好像没用…… 
+   	for(int i=2;i&lt;=x;i++)//循环找素数并筛 
+   	{
+		if(!pd[i])ans[++sum]=i;//发现素数，塞入数组，嘤！ 
+		for(int j=1;j&lt;=sum&amp;&amp;i*ans[j]&lt;=x;j++)//开始筛 
+		{
+			pd[ans[j]*i]=1;//标记 
+			if(i%ans[j]==0)break;//保证每个合数只筛一次 
+		}
+	}
+	for(int i=1;i&lt;=n;i++)
+	{
+		int h;
+		scanf(&quot;%d&quot;,&amp;h);
+		printf(&quot;%d\n&quot;,ans[h]);//输出，因为ans正好存的素数 
+	}
+    return 0;//华丽的结束 
+    QWQ;//QWQ 
+}
+</code></pre>
+<h3 id="不懂的可以依照代码再钻研一下总的来说不难">不懂的可以依照代码再钻研一下，总的来说不难。</h3>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-bi-jiao-bi-ji/">
+                  <h3 class="post-title">
+                    高精度基本比较【笔记】
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

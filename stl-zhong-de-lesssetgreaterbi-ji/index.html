@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>STL中的&lt;set&gt;【笔记】 | Eon_Starlight&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://eon-starlight.github.io/Blog//favicon.ico?v=1585530546362">
+<link rel="stylesheet" href="https://eon-starlight.github.io/Blog//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+头文件中主要包含两种容器：set和multiset
+
+set是什么？
+
+一个有序不重复合集，即内部元素不能重合的无限容量数组，但它不像vector有时能当成一个数组使用。（能自动排序）
+
+multiset是什么？
+
+一个有序可重复合集，即..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://eon-starlight.github.io/Blog/">
+        <img src="https://eon-starlight.github.io/Blog//images/avatar.png?v=1585530546362" class="site-logo">
+        <h1 class="site-title">Eon_Starlight&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://eon-starlight.github.io/Blog/eon-de-keng/" class="site-nav">
+            Eon_Starlight的主页
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      杀不死你的，终会使你更强大
+    </div>
+    <div class="site-footer">
+      “但是”之前的话，都是毫无意义的 | <a class="rss" href="https://eon-starlight.github.io/Blog//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">STL中的&lt;set&gt;【笔记】</h2>
+            <div class="post-date">2020-03-30</div>
+            
+            <div class="post-content" v-pre>
+              <ul>
+<li>头文件<set>中主要包含两种容器：set和multiset</li>
+<li>
+<h4 id="set是什么">set是什么？</h4>
+</li>
+<li>一个有序不重复合集，即内部元素不能重合的无限容量数组，但它不像vector有时能当成一个数组使用。（能自动排序）</li>
+<li>
+<h4 id="multiset是什么">multiset是什么？</h4>
+</li>
+<li>一个有序可重复合集，即内部元素可以重合的无限容量数组。（同上）</li>
+<li>
+<h4 id="除元素可否重合之外函数功能基本相同就不分开说了">除元素可否重合之外函数功能基本相同，就不分开说了</h4>
+</li>
+<li>内部实现实际上是一个RBT（红黑树）</li>
+<li>首先了解如何声明一个set/multiset
+<ul>
+<li>头文件：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;set&gt;
+</code></pre>
+<ul>
+<li>声明：</li>
+</ul>
+<pre><code class="language-cpp">set&lt;int&gt;a;
+multiset&lt;int&gt;b; 
+</code></pre>
+<ul>
+<li>数据结构不限于int，与<a href="https://www.luogu.com.cn/blog/yx20070829/stl-zhong-di-vector-bi-ji-post">vector</a>一样。</li>
+</ul>
+</li>
+<li>a.empty()/a.size()/a.clear()
+<ul>
+<li>功能与vector类似，具体见上面的链接。</li>
+</ul>
+</li>
+<li>迭代器
+<ul>
+<li>在vector已经说过了定义，具体点链接去看，这里就直接讲用法了</li>
+<li>set的迭代器是“双向迭代器”，它不像vector的支持随机访问，它不支持加一个数或减，或与迭代器相加减，它只支持++与--。++将它指向下一个元素，--将它指向上一个元素，使用时要注意是否越界。</li>
+<li>如何声明迭代器：</li>
+</ul>
+<pre><code class="language-cpp">set&lt;int&gt;::iterator it;
+</code></pre>
+</li>
+<li>a.begin()/a.end()
+<ul>
+<li>前者返回set里最小元素的迭代器（因为是有序的）。</li>
+<li>后者返回set里最大元素下一个位置的迭代器，换言之，与vector相同“前闭后开”，因此*a.end()就是越界访问，而--a.end就是set里面最大元素的迭代器。</li>
+<li>遍历方法（只有一种，不像vector有两种）：</li>
+</ul>
+<pre><code class="language-cpp">for(set&lt;int&gt;::iterator it=a.begin();it!=a.end();it++)printf(&quot;%d &quot;,*it);
+</code></pre>
+</li>
+<li>a.inert(x)
+<ul>
+<li>将元素x插入到set a里面</li>
+<li>在set中如果有重复元素就不会再次插入</li>
+</ul>
+</li>
+<li>a.find(x);
+<ul>
+<li>再set a里面查找元素x，若找到则返回该元素的迭代器；若不存在则返回s.end()</li>
+</ul>
+</li>
+<li>a.lower_bound(x)/a.upper_bound(x)
+<ul>
+<li>与a.find()功能类似，但是是有条件寻找</li>
+<li>前者查找<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≥</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\ge x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>中最小的一个，并返回该元素迭代器。</li>
+<li>后者查找<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">&gt; x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>中最小的一个，并返回该元素迭代器。</li>
+</ul>
+</li>
+<li>a.erase(x)/a.eraser(it)
+<ul>
+<li>x为一个元素，则a.erase(x)从set a里面删除所有与x相等的元素。</li>
+<li>it为一个迭代器，则a.erase(it)从set a里面删除it所指向的元素。</li>
+</ul>
+</li>
+<li>a.count(x)
+<ul>
+<li>这个函数返回set a里面所有与x相等的元素个数。</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessvectorgreaterbi-ji/">
+                  <h3 class="post-title">
+                    STL中的&lt;vector&gt;【笔记】
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

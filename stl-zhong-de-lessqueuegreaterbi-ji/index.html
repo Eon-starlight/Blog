@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Eon_Starlight | Eon_Starlight&#39;s blog</title>
+<title>STL中的&lt;queue&gt;【笔记】 | Eon_Starlight&#39;s blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -19,14 +19,17 @@
 
 
     <meta name="description" content="
-游荡于oi界于柴圈……
-一名蒻得很的蒟蒻
-菜是原罪，啥都不会
+头文件中主要包含两种容器：queue和priority_queue
+
+queue是什么？
+
+一个队列，元素先入队，后出队（从头入队，从尾出队）
 
 
-###链接区域
 
-..." />
+priority_queue是什么？
+
+一个大根二叉堆，插入堆就按照正常插入一个堆的方式..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -80,27 +83,112 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Eon_Starlight</h2>
-            <div class="post-date">2020-02-25</div>
+            <h2 class="post-title">STL中的&lt;queue&gt;【笔记】</h2>
+            <div class="post-date">2020-03-30</div>
             
             <div class="post-content" v-pre>
-              <figure data-type="image" tabindex="1"><img src="https://eon-starlight.github.io/Blog//post-images/1582631686318.png" alt="" loading="lazy"></figure>
-<h1 id="游荡于oi界于柴圈">游荡于oi界于柴圈……</h1>
-<h1 id="一名蒻得很的蒟蒻">一名蒻得很的蒟蒻</h1>
-<h1 id="菜是原罪啥都不会">菜是原罪，啥都不会</h1>
-<p><img src="https://eon-starlight.github.io/Blog//post-images/1582631744762.png" alt="" loading="lazy"><br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582631753259.png" alt="" loading="lazy"><br>
-###链接区域<br>
-<a href="https://www.bilibili.com/"><img src="https://eon-starlight.github.io/Blog//post-images/1582675935541.png" alt="" loading="lazy"></a></p>
+              <ul>
+<li>头文件<queue>中主要包含两种容器：queue和priority_queue</li>
+<li>
+<h4 id="queue是什么">queue是什么？</h4>
+<ul>
+<li>一个队列，元素先入队，后出队（从头入队，从尾出队）</li>
+</ul>
+</li>
+<li>
+<h4 id="priority_queue是什么">priority_queue是什么？</h4>
+<ul>
+<li>一个大根二叉堆，插入堆就按照正常插入一个堆的方式，可以弹出堆顶元素</li>
+</ul>
+</li>
+<li>
+<h3 id="queue">queue</h3>
+<ul>
+<li>定义：</li>
+</ul>
+<pre><code class="language-cpp">queue&lt;int&gt;a
+</code></pre>
+<ul>
+<li>数据类型仍然不限于int</li>
+<li>a.push(x)
+<ul>
+<li>将元素x插入到队头。</li>
+</ul>
+</li>
+<li>a.pop()
+<ul>
+<li>将队尾元素弹出。</li>
+</ul>
+</li>
+<li>a.front()
+<ul>
+<li>返回队头元素。</li>
+</ul>
+</li>
+<li>a.back()
+<ul>
+<li>返回队尾元素。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="priority_queue">priority_queue</h3>
+<ul>
+<li>定义：<pre><code class="language-cpp">riority_queue&lt;int&gt;a;
+</code></pre>
+</li>
+<li>a.push(x)
+<ul>
+<li>将元素x插入大根堆。</li>
+</ul>
+</li>
+<li>a.pop()
+<ul>
+<li>删除堆顶元素。</li>
+</ul>
+</li>
+<li>a.top()
+<ul>
+<li>返回堆顶元素。</li>
+</ul>
+</li>
+<li>priority_queue实现小根堆
+<ul>
+<li>priority_queue实现小根二叉堆的方法有两种
+<ol>
+<li>将要插入的元素大小取反，然后插入，当使用时取出值在取反就可以用了</li>
+</ol>
+<ul>
+<li>例如1、2、3，插入时取反：-1、-2、-3，使用时再取相反数就可以了</li>
+</ul>
+<ol start="2">
+<li>建立自定义结构体类型，重载“小于号”，但是当做“大于号”来编写函数，例如：</li>
+</ol>
+<pre><code class="language-cpp">struct rec{int id;double value;};
+bool operator &lt;(const rec &amp;a,const rec &amp;b)
+{
+    return a.value&gt;b.value                  
+}
+</code></pre>
+<ul>
+<li>这样priorit_queue就会认为大的更小，小的更大。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">
+                <a href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessstackgreaterbi-ji/">
                   <h3 class="post-title">
-                    高精度读入【笔记】
+                    STL中的&lt;stack&gt;【笔记】
                   </h3>
                 </a>
               </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Eon_Starlight | Eon_Starlight&#39;s blog</title>
+<title>STL中的&lt;stack&gt;【笔记】 | Eon_Starlight&#39;s blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -19,14 +19,16 @@
 
 
     <meta name="description" content="
-游荡于oi界于柴圈……
-一名蒻得很的蒟蒻
-菜是原罪，啥都不会
 
+stack（栈）是什么？
 
-###链接区域
+可以把它想象为一个无限容量的一个桶，你只能使用拿出放入在桶的最顶端。
+like this：
 
-..." />
+|___可使用元素___|
+|____不可使用____|
+|____不可使用____|
+|____不可使用____..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -80,27 +82,73 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Eon_Starlight</h2>
-            <div class="post-date">2020-02-25</div>
+            <h2 class="post-title">STL中的&lt;stack&gt;【笔记】</h2>
+            <div class="post-date">2020-03-30</div>
             
             <div class="post-content" v-pre>
-              <figure data-type="image" tabindex="1"><img src="https://eon-starlight.github.io/Blog//post-images/1582631686318.png" alt="" loading="lazy"></figure>
-<h1 id="游荡于oi界于柴圈">游荡于oi界于柴圈……</h1>
-<h1 id="一名蒻得很的蒟蒻">一名蒻得很的蒟蒻</h1>
-<h1 id="菜是原罪啥都不会">菜是原罪，啥都不会</h1>
-<p><img src="https://eon-starlight.github.io/Blog//post-images/1582631744762.png" alt="" loading="lazy"><br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582631753259.png" alt="" loading="lazy"><br>
-###链接区域<br>
-<a href="https://www.bilibili.com/"><img src="https://eon-starlight.github.io/Blog//post-images/1582675935541.png" alt="" loading="lazy"></a></p>
+              <ul>
+<li>
+<h4 id="stack栈是什么">stack（栈）是什么？</h4>
+</li>
+<li>可以把它想象为一个无限容量的一个桶，你只能使用拿出放入在桶的最顶端。</li>
+<li>like this：</li>
+</ul>
+<pre><code>|___可使用元素___|
+|____不可使用____|
+|____不可使用____|
+|____不可使用____|
+</code></pre>
+<ul>
+<li>首先了解如何声明一个stack
+<ul>
+<li>头文件：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;stack&gt;
+</code></pre>
+<ul>
+<li>声明：</li>
+</ul>
+<pre><code class="language-cpp">stack&lt;int&gt;a;
+</code></pre>
+<ul>
+<li>数据结可以为任意类型。</li>
+</ul>
+</li>
+<li>a.empty()/a.size()/a.clear()
+<ul>
+<li>功能与其他STL类似分别为判空、元素个数、清空。</li>
+</ul>
+</li>
+<li>迭代器
+<ul>
+<li>栈并不支持迭代器，如果想进行遍历操作就不要使用栈。</li>
+</ul>
+</li>
+<li>a.push(x)
+<ul>
+<li>将元素x放到stack a的顶端。</li>
+</ul>
+</li>
+<li>a.pop()
+<ul>
+<li>将stack a的顶端元素弹出（删除）。</li>
+</ul>
+</li>
+<li>a.top()
+<ul>
+<li>返回stack a的顶端元素（不删除）。</li>
+</ul>
+</li>
+</ul>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">
+                <a href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessmapgreaterbi-ji/">
                   <h3 class="post-title">
-                    高精度读入【笔记】
+                    STL中的&lt;map&gt;【笔记】
                   </h3>
                 </a>
               </div>

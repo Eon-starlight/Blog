@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://eon-starlight.github.io/Blog/</id>
     <title>Eon_Starlight&apos;s blog</title>
-    <updated>2020-03-30T00:46:39.423Z</updated>
+    <updated>2020-03-30T01:09:08.536Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://eon-starlight.github.io/Blog/"/>
     <link rel="self" href="https://eon-starlight.github.io/Blog/atom.xml"/>
@@ -11,625 +11,863 @@
     <icon>https://eon-starlight.github.io/Blog/favicon.ico</icon>
     <rights>All rights reserved 2020, Eon_Starlight&apos;s blog</rights>
     <entry>
-        <title type="html"><![CDATA[高精度基本比较【笔记】]]></title>
-        <id>https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-bi-jiao-bi-ji/</id>
-        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-bi-jiao-bi-ji/">
+        <title type="html"><![CDATA[STL中的<queue>【笔记】]]></title>
+        <id>https://eon-starlight.github.io/Blog/stl-zhong-de-lessqueuegreaterbi-ji/</id>
+        <link href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessqueuegreaterbi-ji/">
         </link>
-        <updated>2020-03-30T00:45:11.000Z</updated>
-        <content type="html"><![CDATA[<h5 id="极水的一篇">极水的一篇……</h5>
-<ul>
-<li>不包括小数、负数（所以没难度）</li>
-<li>读入不解释</li>
-</ul>
-<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
-//读入两个字符串
-</code></pre>
-<ul>
-<li>比较不解释：</li>
-</ul>
-<pre><code class="language-cpp">if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())pd=1;
-</code></pre>
-<ul>
-<li>输出不解释：</li>
-</ul>
-<pre><code class="language-cpp">if(pd==1)cout&gt;&gt;bx;
-else cout&gt;&gt;ax;
-//不是这么简单我还写它干嘛……
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[高精度综合【笔记】]]></title>
-        <id>https://eon-starlight.github.io/Blog/gao-jing-du-zong-he-bi-ji/</id>
-        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-zong-he-bi-ji/">
-        </link>
-        <updated>2020-03-29T12:31:03.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="高精度代码综合讲解">高精度代码综合讲解</h1>
-<ul>
-<li>
-<h2 id="读入不解释">读入不解释</h2>
-</li>
-<li>
-<h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
-</li>
-<li>
-<h2 id="四则运算">四则运算</h2>
-</li>
-<li>
-<h4 id="高精度加法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/">高精度加法</a></h4>
-</li>
-<li>
-<h4 id="高精度减法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/">高精度减法</a></h4>
-</li>
-<li>
-<h4 id="高精度乘法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-cheng-fa-bi-ji/">高精度乘法</a></h4>
-</li>
-<li>
-<h4 id="高精度除法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-chu-fa-bi-ji/">高精度除法</a></h4>
-</li>
-</ul>
-<h6 id="赠品大雾">赠品（大雾</h6>
-<ul>
-<li>
-<h4 id="高精度比较"><a href="">高精度比较</a></h4>
-</li>
-<li>
-<h2 id="输出不解释">输出不解释</h2>
-</li>
-<li>
-<h4 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h4>
-</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ 高精度基本除法【笔记】]]></title>
-        <id>https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-chu-fa-bi-ji/</id>
-        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-chu-fa-bi-ji/">
-        </link>
-        <updated>2020-03-29T12:20:06.000Z</updated>
+        <updated>2020-03-30T01:08:57.000Z</updated>
         <content type="html"><![CDATA[<ul>
-<li>咳咳，推敲了几个小时的战斗结果，不包括小数、负数（输出商和余数）</li>
+<li>头文件<queue>中主要包含两种容器：queue和priority_queue</li>
 <li>
-<h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
+<h4 id="queue是什么">queue是什么？</h4>
+<ul>
+<li>一个队列，元素先入队，后出队（从头入队，从尾出队）</li>
+</ul>
 </li>
-<li>首先讲解思路</li>
-<li>商是什么，就是a能减b多少次对吧</li>
-<li>但因为采用纯循环高精度减法会太慢，所以我们将<strong>被除数与除数高位对齐接着循环减法并计数存到另一数组（前提是被除数大于除数）</strong></li>
-<li>减到最后被除数小于除数的时候，原本的被除数就变成了余数</li>
-<li>还是找两个例数1432和12，存起来是这样的：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/q2ruay3g.png" alt="QAQ" loading="lazy"></li>
-<li>然后我们将b数组用移位函数与a数组对齐：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/mmbqaas5.png" alt="QAQ" loading="lazy"></li>
-<li>接着我们用循环减法模拟：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/kxxq98jm.png" alt="QAQ" loading="lazy"></li>
-<li>然后将b数组降位，再次循环减法：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/jl03hpga.png" alt="QAQ" loading="lazy"></li>
-<li>继续；<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/elctaqc0.png" alt="QAQ" loading="lazy"></li>
-<li>最后变成这样：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/jlrnmvja.png" alt="QAQ" loading="lazy"></li>
-<li>现在答案就是ans，余数就为a。现在看一下代码实现。</li>
-<li>开几个变量不用说了</li>
+<li>
+<h4 id="priority_queue是什么">priority_queue是什么？</h4>
+<ul>
+<li>一个大根二叉堆，插入堆就按照正常插入一个堆的方式，可以弹出堆顶元素</li>
 </ul>
-<pre><code class="language-cpp">int a[1000001],b[1000001],ans[1000001],tmp[1000001],al,bl,asl,tl;//被除数、除数、商、辅助数组、接着是几个存长度的
-string ax,bx;
+</li>
+<li>
+<h3 id="queue">queue</h3>
+<ul>
+<li>定义：</li>
+</ul>
+<pre><code class="language-cpp">queue&lt;int&gt;a
 </code></pre>
 <ul>
-<li>第一步读入</li>
+<li>数据类型仍然不限于int</li>
+<li>a.push(x)
+<ul>
+<li>将元素x插入到队头。</li>
 </ul>
-<pre><code class="language-cpp">	cin&gt;&gt;ax&gt;&gt;bx;
-	for(int i=1;i&lt;=ax.size();i++)a[i]=ax[ax.size()-i]-'0';
-	for(int i=1;i&lt;=bx.size();i++)b[i]=bx[bx.size()-i]-'0';
-	al=ax.size();
-	bl=bx.size();
-    asl=al-bl+1;//商的最长长度
+</li>
+<li>a.pop()
+<ul>
+<li>将队尾元素弹出。</li>
+</ul>
+</li>
+<li>a.front()
+<ul>
+<li>返回队头元素。</li>
+</ul>
+</li>
+<li>a.back()
+<ul>
+<li>返回队尾元素。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="priority_queue">priority_queue</h3>
+<ul>
+<li>定义：<pre><code class="language-cpp">riority_queue&lt;int&gt;a;
+</code></pre>
+</li>
+<li>a.push(x)
+<ul>
+<li>将元素x插入大根堆。</li>
+</ul>
+</li>
+<li>a.pop()
+<ul>
+<li>删除堆顶元素。</li>
+</ul>
+</li>
+<li>a.top()
+<ul>
+<li>返回堆顶元素。</li>
+</ul>
+</li>
+<li>priority_queue实现小根堆
+<ul>
+<li>priority_queue实现小根二叉堆的方法有两种
+<ol>
+<li>将要插入的元素大小取反，然后插入，当使用时取出值在取反就可以用了</li>
+</ol>
+<ul>
+<li>例如1、2、3，插入时取反：-1、-2、-3，使用时再取相反数就可以了</li>
+</ul>
+<ol start="2">
+<li>建立自定义结构体类型，重载“小于号”，但是当做“大于号”来编写函数，例如：</li>
+</ol>
+<pre><code class="language-cpp">struct rec{int id;double value;};
+bool operator &lt;(const rec &amp;a,const rec &amp;b)
+{
+    return a.value&gt;b.value                  
+}
 </code></pre>
 <ul>
-<li>接着我们要从asl开始向下循环，为了让数组对齐，具体见代码</li>
+<li>这样priorit_queue就会认为大的更小，小的更大。</li>
 </ul>
-<pre><code class="language-cpp">	for(int i=asl;i&gt;0;i--)
-	{
-        memset(tmp,0,sizeof(tmp));//清空辅助数组
-        for(int j=1;j&lt;=bl;j++)tmp[j+i-1]=b[j];//将除数与最高位与被除数对齐并复制到辅助数组里
-    	tl=bl+i-1;//改一下长度
-    	int pd=0;//这里要判断被除数与辅助的大小
-    	if(al&gt;tl)pd=1;//比长度
-    	if(al&lt;tl)pd=-1;
-    	for(int j=al;j&gt;0;j--)//若长度相同就按位比
-		{
-			if(a[j]&gt;tmp[j])pd=1;
-			if(a[j]&lt;tmp[j])pd=-1;
-		}
-        //pd为0就是相等，-1是tmp大，1是a大
-        while(pd&gt;=0)//循环减法，条件保证能减
-		{
-			ans[i]++;//先计数
-			if(pd==0)al=0;//如果相等就直接长度为0就OK了
-    		else//否则就减，高精减法不懂见下方链接
-    		{
-        		for(int j=1;j&lt;=al;j++)
-        		{
-        		    if(a[j]&lt;b[j])
-					{
-						a[j+1]--;
-						a[j]+=10;
-					}
-    		        if(a[j]&gt;=b[j])a[j]-=b[j];
-    		    }
-    		    while((a[al]==0)&amp;&amp;(al&gt;0))al--;
-    		}
-			pd=0;//减完再次判断
-    		if(al&gt;tl)pd=1;
-    		if(al&lt;tl)pd=-1;
-    		for(int j=al;j&gt;0;j--)
-			{
-				if(a[j]&gt;tmp[j])pd=1;
-				if(a[j]&lt;tmp[j])pd=-1;
-			}
-		}
-    }
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[STL中的<stack>【笔记】]]></title>
+        <id>https://eon-starlight.github.io/Blog/stl-zhong-de-lessstackgreaterbi-ji/</id>
+        <link href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessstackgreaterbi-ji/">
+        </link>
+        <updated>2020-03-30T01:08:38.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h4 id="stack栈是什么">stack（栈）是什么？</h4>
+</li>
+<li>可以把它想象为一个无限容量的一个桶，你只能使用拿出放入在桶的最顶端。</li>
+<li>like this：</li>
+</ul>
+<pre><code>|___可使用元素___|
+|____不可使用____|
+|____不可使用____|
+|____不可使用____|
 </code></pre>
 <ul>
-<li>最后需要控0（去掉商高位的0）</li>
+<li>首先了解如何声明一个stack
+<ul>
+<li>头文件：</li>
 </ul>
-<pre><code class="language-cpp">    while((ans[asl]==0)&amp;&amp;(asl&gt;0))asl--;
+<pre><code class="language-cpp">#include&lt;stack&gt;
 </code></pre>
 <ul>
-<li>输出就判断一下长度，如果为0就输出0</li>
+<li>声明：</li>
 </ul>
-<pre><code class="language-cpp">	if(asl==0)printf(&quot;0&quot;);
-	else
-	{
-    	for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
-    }
-	printf(&quot; &quot;);//商和余数中间的空格
-	if(al==0)printf(&quot;0&quot;);
-	else
-	{
-    	for(int i=al;i&gt;0;i--)printf(&quot;%d&quot;,a[i]);
-    }
+<pre><code class="language-cpp">stack&lt;int&gt;a;
 </code></pre>
 <ul>
-<li>全代码</li>
+<li>数据结可以为任意类型。</li>
 </ul>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//万能库
-using namespace std;
-int a[1000001],b[1000001],ans[1000001],tmp[1000001],al,bl,asl,tl;
-string ax,bx;//开变量
+</li>
+<li>a.empty()/a.size()/a.clear()
+<ul>
+<li>功能与其他STL类似分别为判空、元素个数、清空。</li>
+</ul>
+</li>
+<li>迭代器
+<ul>
+<li>栈并不支持迭代器，如果想进行遍历操作就不要使用栈。</li>
+</ul>
+</li>
+<li>a.push(x)
+<ul>
+<li>将元素x放到stack a的顶端。</li>
+</ul>
+</li>
+<li>a.pop()
+<ul>
+<li>将stack a的顶端元素弹出（删除）。</li>
+</ul>
+</li>
+<li>a.top()
+<ul>
+<li>返回stack a的顶端元素（不删除）。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[STL中的<map>【笔记】]]></title>
+        <id>https://eon-starlight.github.io/Blog/stl-zhong-de-lessmapgreaterbi-ji/</id>
+        <link href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessmapgreaterbi-ji/">
+        </link>
+        <updated>2020-03-30T01:08:14.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h4 id="map是什么">map是什么？</h4>
+</li>
+<li>map是一个可以以自定义任意类型的下标及存储类型的数组。</li>
+<li>实际上map容器是一个键值对key-value的映射。其内部实现是一棵一key为关键码的红黑树。map的key和value可以是任意类型。</li>
+<li>声明：
+<ul>
+<li>头文件：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;map&gt;
+</code></pre>
+<ul>
+<li>声明：</li>
+</ul>
+<pre><code>map&lt;string,int&gt;a;
+</code></pre>
+<ul>
+<li>你甚至可以用vector来作为key或value：</li>
+</ul>
+<pre><code>map&lt; vector&lt;int&gt;,int&gt;b;
+</code></pre>
+</li>
+<li>a.size()/a.empty()/a.claer()/a.begin()/a.end()
+<ul>
+<li>作用与<a href="https://www.luogu.com.cn/blog/yx20070829/stl-zhong-di-set-bi-ji-post">set</a>类似，依次为元素个数、判空、清空、首迭代器、尾迭代器。</li>
+</ul>
+</li>
+<li>迭代器
+<ul>
+<li>与set相同，都是“双向访问迭代器”。对map的迭代器解除引用（即+&quot;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>&quot;）得到的是一对key、value。</li>
+</ul>
+</li>
+<li>a.insert(make_pair(x,y))/a.erase(it)/a.erase(make_pair(x,y))
+<ul>
+<li>第一个函数将key x，value y，建立映射，这里补充一下，map可以当成数组使用：a[key]=value，所以这里赋值只需要：a[x]=y;两种方法效果一样</li>
+<li>第二个函数将map a中it指向的pair删除。</li>
+<li>第三个函数将map a中key为x，value为y的元素删除。</li>
+</ul>
+</li>
+<li>a.find(x)
+<ul>
+<li>在map a里寻找key为x的pair（二元组），若找到就返回该pair的迭代器，否则返回a.end()</li>
+</ul>
+</li>
+<li>PS：假如要使用a[x]的值，但之前并未赋值，这时a会自动建立一个以x为key的空value，接着返回，如果遇到大量这种情况就会浪费大量空间及时间，所以在引用之前建议先用a.find()函数寻找后再使用。</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[STL中的<set>【笔记】]]></title>
+        <id>https://eon-starlight.github.io/Blog/stl-zhong-de-lesssetgreaterbi-ji/</id>
+        <link href="https://eon-starlight.github.io/Blog/stl-zhong-de-lesssetgreaterbi-ji/">
+        </link>
+        <updated>2020-03-30T01:07:46.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>头文件<set>中主要包含两种容器：set和multiset</li>
+<li>
+<h4 id="set是什么">set是什么？</h4>
+</li>
+<li>一个有序不重复合集，即内部元素不能重合的无限容量数组，但它不像vector有时能当成一个数组使用。（能自动排序）</li>
+<li>
+<h4 id="multiset是什么">multiset是什么？</h4>
+</li>
+<li>一个有序可重复合集，即内部元素可以重合的无限容量数组。（同上）</li>
+<li>
+<h4 id="除元素可否重合之外函数功能基本相同就不分开说了">除元素可否重合之外函数功能基本相同，就不分开说了</h4>
+</li>
+<li>内部实现实际上是一个RBT（红黑树）</li>
+<li>首先了解如何声明一个set/multiset
+<ul>
+<li>头文件：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;set&gt;
+</code></pre>
+<ul>
+<li>声明：</li>
+</ul>
+<pre><code class="language-cpp">set&lt;int&gt;a;
+multiset&lt;int&gt;b; 
+</code></pre>
+<ul>
+<li>数据结构不限于int，与<a href="https://www.luogu.com.cn/blog/yx20070829/stl-zhong-di-vector-bi-ji-post">vector</a>一样。</li>
+</ul>
+</li>
+<li>a.empty()/a.size()/a.clear()
+<ul>
+<li>功能与vector类似，具体见上面的链接。</li>
+</ul>
+</li>
+<li>迭代器
+<ul>
+<li>在vector已经说过了定义，具体点链接去看，这里就直接讲用法了</li>
+<li>set的迭代器是“双向迭代器”，它不像vector的支持随机访问，它不支持加一个数或减，或与迭代器相加减，它只支持++与--。++将它指向下一个元素，--将它指向上一个元素，使用时要注意是否越界。</li>
+<li>如何声明迭代器：</li>
+</ul>
+<pre><code class="language-cpp">set&lt;int&gt;::iterator it;
+</code></pre>
+</li>
+<li>a.begin()/a.end()
+<ul>
+<li>前者返回set里最小元素的迭代器（因为是有序的）。</li>
+<li>后者返回set里最大元素下一个位置的迭代器，换言之，与vector相同“前闭后开”，因此*a.end()就是越界访问，而--a.end就是set里面最大元素的迭代器。</li>
+<li>遍历方法（只有一种，不像vector有两种）：</li>
+</ul>
+<pre><code class="language-cpp">for(set&lt;int&gt;::iterator it=a.begin();it!=a.end();it++)printf(&quot;%d &quot;,*it);
+</code></pre>
+</li>
+<li>a.inert(x)
+<ul>
+<li>将元素x插入到set a里面</li>
+<li>在set中如果有重复元素就不会再次插入</li>
+</ul>
+</li>
+<li>a.find(x);
+<ul>
+<li>再set a里面查找元素x，若找到则返回该元素的迭代器；若不存在则返回s.end()</li>
+</ul>
+</li>
+<li>a.lower_bound(x)/a.upper_bound(x)
+<ul>
+<li>与a.find()功能类似，但是是有条件寻找</li>
+<li>前者查找<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≥</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\ge x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>中最小的一个，并返回该元素迭代器。</li>
+<li>后者查找<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">&gt; x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>中最小的一个，并返回该元素迭代器。</li>
+</ul>
+</li>
+<li>a.erase(x)/a.eraser(it)
+<ul>
+<li>x为一个元素，则a.erase(x)从set a里面删除所有与x相等的元素。</li>
+<li>it为一个迭代器，则a.erase(it)从set a里面删除it所指向的元素。</li>
+</ul>
+</li>
+<li>a.count(x)
+<ul>
+<li>这个函数返回set a里面所有与x相等的元素个数。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[STL中的<vector>【笔记】]]></title>
+        <id>https://eon-starlight.github.io/Blog/stl-zhong-de-lessvectorgreaterbi-ji/</id>
+        <link href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessvectorgreaterbi-ji/">
+        </link>
+        <updated>2020-03-30T01:07:20.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h4 id="vector是什么">vector是什么？</h4>
+</li>
+<li>一个可以无限延长但只限于尾部插入弹出元素的任意数据类型的数组。</li>
+<li>首先了解如何声明一个vector
+<ul>
+<li>头文件：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;vector&gt;
+</code></pre>
+<ul>
+<li>声明：</li>
+</ul>
+<pre><code class="language-cpp">vector&lt;int&gt;a;
+</code></pre>
+</li>
+<li>这时就开了一个叫'a'的vector存的是int形的变量，当然也可以改成string或long long以及其他数据类型甚至自己定义的结构体也是可以的。</li>
+<li>接下来就是使用方法了。</li>
+<li>a.size()/a.empty()所有的STL容器都支持
+<ul>
+<li>前者是返回vector的实际长度。</li>
+<li>后者返回一个bool形，表示vector是否为空。</li>
+</ul>
+</li>
+<li>a.clear()
+<ul>
+<li>清空vector</li>
+</ul>
+</li>
+<li>迭代器
+<ul>
+<li>就像指针一样，用'<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>'解除引用</li>
+<li>如何声明（这里的例子为保存int的vector的迭代器）：</li>
+</ul>
+<pre><code class="language-cpp">vector&lt;int&gt;::iterator it;
+//it就是变量名，可以换
+</code></pre>
+<ul>
+<li>如何使用？</li>
+<li>vector的迭代器是“随机访问迭代器”，可以与一个整数相加或相减（类似于指针移动）；也可以另一个迭代器相加或相减（类似于指针相加减）。</li>
+<li>表示迭代器指向的量就<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>it（就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>+迭代器名）</li>
+<li>迭代器与指针的区别：
+<ol>
+<li>cout可以输出指针的值，但是迭代器进行该操作时会报错。因为迭代器返回的是对象引用而不是对象的值，所以cout只能输出迭代器使用&quot;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>&quot;解除引用而不能直接输出其自身。</li>
+<li>指针能指向函数而迭代器不行，迭代器只能指向容器。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>a.begin()/a.end()
+<ul>
+<li>前者返回vector内第一个元素的迭代器，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>a.begin()=a[0]</li>
+<li>后者返回最后一个元素<strong>后边的边界</strong>的迭代器，注意不是返回最后一个元素的迭代器，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>a.end()=a[a.size()]，实际上是越界访问。</li>
+<li>就在这里介绍一下两种遍历vector的方法
+<ol>
+<li>把vector变成数组使用（只有遍历时可用，插入元素不可以）、</li>
+</ol>
+<pre><code class="language-cpp">for(int i=0;i&lt;a.size();i++)printf(&quot;%d &quot;,a[i]);//注意不要越界
+</code></pre>
+<ol start="2">
+<li>把vector变成数组使用（只有遍历时可用，插入元素不可以）、</li>
+</ol>
+<pre><code class="language-cpp">for(vector&lt;int&gt;::iterator it=a.begin();it!=a.end();it++)printf(&quot;%d &quot;,*it);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>a.front()/a.back()
+<ul>
+<li>前者返回vector的第一个元素（不是迭代器了），相当于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>a.begin/a[0]。</li>
+<li>后者返回vector最后一个元素（不是边界了），相当于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span></span></span></span>--a.end()和a[a.size()-1]。</li>
+</ul>
+</li>
+<li>a.push_bac(x)k/a.pop_back()
+<ul>
+<li>前者把x插入到vector a的尾部。</li>
+<li>后者将vector a的尾部元素弹掉（删除）</li>
+</ul>
+</li>
+<li>vector在哪里会用到？
+<ul>
+<li>用vector可以代替邻接表存有向图。</li>
+</ul>
+<pre><code class="language-cpp">vector&lt;int&gt;ver[10001],edge[10001];
+void add(int x,int y,int z)//保存从x到y权值为z的有向边
+{
+    vre[x].push_back(y);
+    edge[x].push_back(z);
+    return;
+}
+//遍历所有从x出发的点：
+for(int i=0;i&lt;ver[x].size();i+++)int y=ver[x][i],z=edge[x][i];
+</code></pre>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Luogu（CF搬运）CF171G 【Mysterious numbers - 2】【题解】]]></title>
+        <id>https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf171g-mysterious-numbers-2-ti-jie/</id>
+        <link href="https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf171g-mysterious-numbers-2-ti-jie/">
+        </link>
+        <updated>2020-03-30T01:05:22.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/CF171G">题目链接</a></p>
+<h4 id="这是一道简单的递推">这是一道简单的递推</h4>
+<ul>
+<li>题目中已经给出了递推式：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>n</mi></msub><mo>=</mo><msub><mi>f</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>f</mi><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">f_n=f_{n-1}+f_{n-2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.902771em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.902771em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>简单的来说就是当前项为前两项之和</li>
+<li>所以就只需要一个数组来进行递推：</li>
+</ul>
+<pre><code class="language-cpp">f[i]/*当前项*/=f[i-1]/*前一项*/+f[i-2]/*大前项*/;
+</code></pre>
+<ul>
+<li>接着亮一下代码：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+int f[21],n;//数组开的刚刚好，要注意数据大小
 int main()
 {
-    cin&gt;&gt;ax&gt;&gt;bx;//读入不解释
-	for(int i=1;i&lt;=ax.size();i++)a[i]=ax[ax.size()-i]-'0';
-	for(int i=1;i&lt;=bx.size();i++)b[i]=bx[bx.size()-i]-'0';
-	al=ax.size();
-	bl=bx.size();
-    asl=al-bl+1;
-    for(int i=asl;i&gt;0;i--)//重要的部分
-	{
-        memset(tmp,0,sizeof(tmp));//清0
-        for(int j=1;j&lt;=bl;j++)tmp[j+i-1]=b[j];//位移
-    	tl=bl+i-1;
-    	int pd=0;//判断谁大
-    	if(al&gt;tl)pd=1;
-    	if(al&lt;tl)pd=-1;
-    	for(int j=al;j&gt;0;j--)
-		{
-			if(a[j]&gt;tmp[j])pd=1;
-			if(a[j]&lt;tmp[j])pd=-1;
-		}
-        while(pd&gt;=0)//相减计数
-		{
-			ans[i]++;
-			if(pd==0)al=0;
-    		else
-    		{
-        		for(int j=1;j&lt;=al;j++)
-        		{
-        		    if(a[j]&lt;b[j])
-					{
-						a[i+1]--;
-						a[i]+=10;
-					}
-    		        if(a[j]&gt;=b[j])a[j]-=b[j];
-    		    }
-    		    while((a[al]==0)&amp;&amp;(al&gt;0))al--;
-    		}
-			pd=0;
-    		if(al&gt;tl)pd=1;
-    		if(al&lt;tl)pd=-1;
-    		for(int j=al;j&gt;0;j--)
-			{
-				if(a[j]&gt;tmp[j])pd=1;
-				if(a[j]&lt;tmp[j])pd=-1;
-			}
-		}
-    }
-    while((ans[asl]==0)&amp;&amp;(asl&gt;0))asl--;//去掉高位的0
-    if(asl==0)printf(&quot;0&quot;);输出不解释
-	else
-	{
-    	for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
-    }
-	printf(&quot; &quot;);
-	if(al==0)printf(&quot;0&quot;);
-	else
-	{
-    	for(int i=al;i&gt;0;i--)printf(&quot;%d&quot;,a[i]);
-    }
-    return 0;
+	scanf(&quot;%d%d%d&quot;,&amp;f[0],&amp;f[1],&amp;n);//读入（注意是第零项和第一项）
+	for(int i=2;i&lt;=n;i++)f[i]=f[i-1]+f[i-2];//for循环递推
+	printf(&quot;%d&quot;,f[n]);//输出
+	return 0;//拜拜
 }
 </code></pre>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[ 高精度基本乘法【笔记】]]></title>
-        <id>https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-cheng-fa-bi-ji/</id>
-        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-cheng-fa-bi-ji/">
+        <title type="html"><![CDATA[Luogu（CF搬运）CF411A 【Password Check】【题解】]]></title>
+        <id>https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf411a-password-check-ti-jie/</id>
+        <link href="https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf411a-password-check-ti-jie/">
         </link>
-        <updated>2020-03-29T11:55:17.000Z</updated>
-        <content type="html"><![CDATA[<h5 id="稍微不好理解一点">稍微不好理解一点</h5>
+        <updated>2020-03-30T01:02:27.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/CF411A">题目链接</a></p>
 <ul>
-<li>不包括小数、负数</li>
 <li>
-<h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
+<h3 id="介绍一种题解里没有的方法突然在脑里生成的奇怪方法">介绍一种题解里没有的方法<s>突然在脑里生成的奇怪方法</s></h3>
 </li>
-<li>先看一个例子：356和12相乘：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/eqbva1jk.png" alt="QAQ" loading="lazy"></li>
-<li>由此发现：第i位与第j位相乘，乘积加到第i*j-1位。</li>
-<li>这时候就需要进位了，我们模拟一下进位过程，需要从低位到高位：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/5rcm8gw4.png" alt="QAQ" loading="lazy"></li>
-<li>then<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/vf5odps2.png" alt="QAQ" loading="lazy"></li>
-<li>finally<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/mzsfza4e.png" alt="QAQ" loading="lazy"></li>
-<li>这就是整体思路：计算+进位，这种逻辑仔细想想是可行的因为计算时进位最多进8（因为是乘法），进位到i位最多是9再加上最后维护进位时的1最多到18，不会存在多次进位。<br>
-代码：</li>
+<li>这需要用到字符串的强大find功能</li>
+<li>加入a是一个字符串，a.find()（这里填你需要寻找的字符或字符串）</li>
+<li>接着如果找到了就返回位置（最靠前的下标，从0开始）</li>
+<li>反之没找到就返回-1</li>
+<li>举例：</li>
 </ul>
-<pre><code class="language-cpp">for(int i=1;i&lt;=ax.size();i++)
-{
-	for(int j=1;j&lt;=bx.size();j++)
-	{
-		ans[i+j-1]+=(a[i]*b[j])%10;
-		ans[i+j]+=(a[i]*b[j])/10;
-	}
-}//计算不解释
-asl=ax.size()*bx.size();//ans长度最大值
-while(ans[asl]==0)asl--;//找出ans没进位前长度（进位后也最大多1位）
-for(int i=1;i&lt;=asl;i++)
-{
-	if(i==asl&amp;&amp;ans[i]&gt;=10)//特判，如果最后一位要进位需要加长asl（ans长度）
-	{
-		ans[i+1]+=ans[i]/10;
-		ans[i]%=10;
-		asl++;
-		break;
-	}
-	if(ans[i]&gt;=10)
-	{
-		ans[i+1]+=ans[i]/10;
-		ans[i]%=10;
-	}
-}
+<pre><code class="language-cpp">string a=&quot;123&quot;;
+int x=a.find('1'),y=a.find(&quot;23&quot;),z=a.find('4');
+- 这时x的值为0，y为1，z为-1
+- 接着我们需要用字符型变量做循环变量
+- 就向这样：
+
+```cpp
+for(char i='1';i&lt;='9';i++)
 </code></pre>
 <ul>
-<li>
-<h4 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h4>
-</li>
-<li>贴完整代码：</li>
+<li>接下来就用介绍的功能完成这道题</li>
+<li>首先设计个变量：</li>
 </ul>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int a[2001],b[2001],ans[4000001],pd,asl;
-string ax,bx;
-int main()
-{
-	cin&gt;&gt;ax&gt;&gt;bx;
-	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
-	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
-	for(int i=1;i&lt;=ax.size();i++)
-	{
-		for(int j=1;j&lt;=bx.size();j++)
+<pre><code class="language-cpp">string a;
+bool x,y,z;
+</code></pre>
+<ul>
+<li>a为读入变量，x判断是否有数字，y判断是否有小写字母，z判断是否有大写字母。</li>
+<li>接着读入后，写三个循环分别查看是否有数字，小大写字母：</li>
+</ul>
+<pre><code class="language-cpp">for(char i='0';i&lt;='9';i++)//判断数字
+    {
+		if(a.find(i)!=-1)//发现就存起来
 		{
-			ans[i+j-1]+=(a[i]*b[j])%10;
-			ans[i+j]+=(a[i]*b[j])/10;
-		}
-	}
-	asl=ax.size()*bx.size();
-	while(ans[asl]==0)asl--;
-	for(int i=1;i&lt;=asl;i++)
-	{
-		if(i==asl&amp;&amp;ans[i]&gt;=10)
-		{
-			ans[i+1]+=ans[i]/10;
-			ans[i]%=10;
-			asl++;
+			x=1;
 			break;
 		}
-		if(ans[i]&gt;=10)
+	}
+	for(char i='a';i&lt;='z';i++)//判断小写字母
+    {
+		if(a.find(i)!=-1)//同上
 		{
-			ans[i+1]+=ans[i]/10;
-			ans[i]%=10;
+			y=1;
+			break;
 		}
 	}
-	for(int i=asl;i&gt;=1;i--)printf(&quot;%d&quot;,ans[i]);
-    return 0;
-}
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ 高精度基本减法【笔记】]]></title>
-        <id>https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/</id>
-        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/">
-        </link>
-        <updated>2020-03-29T10:18:50.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li>不包括负数、小数（但可以输出负数）</li>
-<li>
-<h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
-</li>
-<li>因为第二个数有可能比第一个数大，也就是有负数答案，所以我们需要判断一下是否是这样的情况。代码实现；</li>
-</ul>
-<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
-if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())//判断
-{
-	swap(ax,bx);
-	pd=1;
-}
-for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
-for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
-//思路就是把a-b变成-(b-a),pd=1代表这种情况，pd=0就不是
-</code></pre>
-<ul>
-<li>整体思路与高精度加法差不多，都是依据小学数学进行模拟</li>
-<li>
-<h4 id="高精度加法链接"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/">高精度加法链接</a></h4>
-</li>
-<li>具体见代码：</li>
-</ul>
-<pre><code class="language-cpp">for(int i=1;i&lt;=max(ax.size(),bx.size());i++)
-{
-	if(a[i]&lt;b[i])
-	{
-		a[i+1]--;//向高位借位，这个绝不能放在ans上跟高精加法的原因一样。
-		a[i]+=10;//借过来的位
+	for(char i='A';i&lt;='Z';i++)//大写字母
+    {
+		if(a.find(i)!=-1)//同
+		{
+			z=1;
+			break;
+		}
 	}
-	ans[i]=a[i]-b[i];
-}
 </code></pre>
 <ul>
-<li>然后要计算答案长度，跟高精加法差不多：</li>
+<li>最后只要看xyz再输出就可以了</li>
+<li>整体代码：</li>
 </ul>
-<pre><code class="language-cpp">asl=max(ax.size(),bx.size());
-while(ans[asl]==0)asl--;
-</code></pre>
-<ul>
-<li>输出需要看一下pd，是否输出负号，所以要加一句代码：</li>
-</ul>
-<pre><code class="language-cpp">if(pd==1)printf(&quot;-&quot;);
-</code></pre>
-<ul>
-<li>
-<h4 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h4>
-</li>
-<li>最后在输出之后要特判一下，bug原因：</li>
-</ul>
-<pre><code class="language-cpp">if(asl&lt;1)printf(&quot;0&quot;);
-</code></pre>
-<ul>
-<li>完整代码：</li>
-</ul>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//万能库
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;set&gt;
+#include&lt;queue&gt;
+#include&lt;deque&gt;
 using namespace std;
-int a[10087],b[10087],ans[10087],pd,asl;
-string ax,bx;
+string a;//设置变量
+bool x,y,z;
 int main()
 {
-	cin&gt;&gt;ax&gt;&gt;bx;
-	if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())
-	{
-		swap(ax,bx);
-		pd=1;
-	}
-	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
-	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
-	for(int i=1;i&lt;=max(ax.size(),bx.size());i++)
-	{
-		if(a[i]&lt;b[i])
+	cin&gt;&gt;a;//读入（只能cin）
+    for(char i='0';i&lt;='9';i++)//解释过的三个循环
+    {
+		if(a.find(i)!=-1)
 		{
-			a[i+1]--;
-			a[i]+=10;
+			x=1;
+			break;
 		}
-		ans[i]=a[i]-b[i];
 	}
-	asl=max(ax.size(),bx.size());
-	while(ans[asl]==0)asl--;
-	if(pd==1)printf(&quot;-&quot;);
-	for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
-	if(asl&lt;1)printf(&quot;0&quot;);
+	for(char i='a';i&lt;='z';i++)
+    {
+		if(a.find(i)!=-1)
+		{
+			y=1;
+			break;
+		}
+	}
+	for(char i='A';i&lt;='Z';i++)
+    {
+		if(a.find(i)!=-1)
+		{
+			z=1;
+			break;
+		}
+	}
+	if(x&amp;&amp;y&amp;&amp;z&amp;&amp;a.length()&gt;=5/*字符串长度函数*/)printf(&quot;Correct&quot;);//如果条件成立
+	else printf(&quot;Too weak&quot;);//否则
     return 0;
 }
 </code></pre>
+<ul>
+<li>
+<h6 id="求赞">求赞</h6>
+</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[高精度基本加法【笔记】]]></title>
-        <id>https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/</id>
-        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/">
+        <title type="html"><![CDATA[Luogu（CF搬运）CF978A 【Remove Duplicates】【题解】]]></title>
+        <id>https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf978a-remove-duplicates-ti-jie/</id>
+        <link href="https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf978a-remove-duplicates-ti-jie/">
         </link>
-        <updated>2020-02-26T05:13:33.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li>不包括负数、小数</li>
-<li>
-<h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
-</li>
-<li>首先以15463和23521为例数来进行模拟加法，如下图<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/llfbhk54.png" alt="QAQ" loading="lazy"></li>
-<li>由此可见，每一位与每一位直接相加传进答案，也就是：</li>
-</ul>
-<pre><code class="language-cpp">ans[i]=a[i]+b[i];
-//代码实现
-</code></pre>
-<h2 id="但是这没有考虑进位qaq">但是这没有考虑进位！！QAQ</h2>
-<ul>
-<li>那要怎么解决呢？可以根据小学知识来看把进的位加到下一位，就是低位-10，高位+10，代码实现：</li>
-</ul>
-<pre><code class="language-cpp">if(a[i]+b[i]&gt;=10)
-{
-	ans[i+1]++;
-	a[i]-=10;//不用担心变成负数，加上b[i]总会≥0
-}
-ans[i]+=a[i]+b[i];
-//这是对第i位的处理
-</code></pre>
+        <updated>2020-03-30T01:00:53.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/CF978A">题目链接</a></p>
 <ul>
 <li>
-<h3 id="注意进的位加到ans数组上了正常来说这不对会有解释">注意进的位加到ans数组上了，正常来说这不对，会有解释。</h3>
+<h3 id="介绍一种题解里没有的方法">介绍一种题解里没有的方法</h3>
 </li>
-<li>我们再举个例子13425和15718：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/6k5jlze9.png" alt="QAQ" loading="lazy"></li>
 <li>
-<h3 id="在这个时候会出现问题举个例子就明白了">在这个时候会出现问题，举个例子就明白了。</h3>
+<h6 id="博客食用更佳"><a href="https://www.luogu.com.cn/blog/yx20070829/solution-cf978a">博客食用更佳</a></h6>
 </li>
-<li>15555和14545：<br>
-<img src="https://cdn.luogu.com.cn/upload/image_hosting/h1f46plz.png" alt="QAQ" loading="lazy"></li>
-<li>因为我们把进的一位加到ans数组上了，然而我们无法判断ans[i]是否要进位，所以就出现了这种情况。</li>
-<li>为了避免这种情况我们进的位加到a数组里见代码：</li>
-</ul>
-<pre><code class="language-cpp">if(a[i]+b[i]&gt;=10)
-{
-	a[i+1]++;
-	a[i]-=10;
-}
-ans[i]+=a[i]+b[i];
-</code></pre>
-<ul>
-<li>这就是正确的计算过程。为了方便输出我们要算出答案的长度，长度最低为asl=max(ax.size(),bx.size);（输入的ax和bx）。因为有进位的可能所以我们要维护一下：</li>
-</ul>
-<pre><code class="language-cpp">while(ans[asl]!=0)asl++;
-//就是枚举到最高位
-asl--;
-//但是这样会多出来1，就减掉
-</code></pre>
-<ul>
+<li>需要用到两个int型数组：w[51],s[1001]。</li>
+<li>我们要干什么呢？</li>
+<li>首先每读入一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 就更新w的值：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">w[i]=a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>但因为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 会重复，所以就会有多个w[i]指向一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>为了判断w[i]是否是最后一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 我们就要用到s数组</li>
+<li>更新s的值：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><msub><mi>a</mi><mi>i</mi></msub><mo>]</mo><mo>=</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">s[a_i]=i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span></li>
+<li>这样就保证 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>[</mo><msub><mi>a</mi><mi>i</mi></msub><mo>]</mo></mrow><annotation encoding="application/x-tex">s[a_i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span> 是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 读入的最后位置</li>
+<li>当s[w[i]]=i，就有w[i]是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的最后读入位置，也就是说这个时候就可以输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 了</li>
+<li>但是题目还要求出不重复数字的个数</li>
+<li>我们就需要在读入时用到q数组来判断这个数是否出现过</li>
 <li>
-<h4 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h4>
+<h3 id="可能有点杂如果不懂边看代码边看注释">可能有点杂，如果不懂边看代码边看注释</h3>
 </li>
-<li>完整代码：</li>
 </ul>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//万能库
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
 using namespace std;
-int a[1000001],b[1000001],ans[1000001],asl;
-string ax,bx;
+int n,a[51],s[1001],ans;//a数组就是w，ans是用于存个数的
+bool q[1001];//判重数组
 int main()
 {
-	cin&gt;&gt;ax&gt;&gt;bx;
-	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
-	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
-	for(int i=1;i&lt;=max(ax.size(),bx.size())+1;i++)
-	{
-	    if(a[i]+b[i]&gt;=10)
-	    {
-	        a[i+1]++;
-	        a[i]-=10;
-	    }
-	    ans[i]+=a[i]+b[i];
+    scanf(&quot;%d&quot;,&amp;n);//读入n
+    for(int i=1;i&lt;=n;i++)
+    {
+		int h;//就相当于a_i
+		scanf(&quot;%d&quot;,&amp;h);
+		a[i]=h;//更新a[i](w[i])
+		s[h]=i;//更新s[h](s[a_i)
+		if(q[h]==0)ans++;//没有重复ans++
+		q[h]=1;//更新q
 	}
-	asl=max(ax.size(),bx.size())+1;
-	while(ans[asl]!=0)asl++;
-	asl--;
-	for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
-	return 0;
+	printf(&quot;%d\n&quot;,ans);//首先数出个数
+	for(int i=1;i&lt;=n;i++)
+	{
+		if(s[a[i]]==i)printf(&quot;%d &quot;,a[i]);//如果映射成功说明这是a_i的最后位置，就可以输出了。
+	}
+    return 0;//程序拜拜
 }
 </code></pre>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[高精度输出【笔记】]]></title>
-        <id>https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/</id>
-        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">
+        <title type="html"><![CDATA[Luogu（CF搬运）CF656G 【You're a Professional】【题解】]]></title>
+        <id>https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf656g-youre-a-professional-ti-jie/</id>
+        <link href="https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf656g-youre-a-professional-ti-jie/">
         </link>
-        <updated>2020-02-26T05:05:43.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="高精度基本算法的通用输出">高精度基本算法的通用输出</h4>
-<h5 id="非常的简单鸭">非常的简单鸭</h5>
+        <updated>2020-03-30T00:58:10.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/CF656G">题目链接</a></p>
 <ul>
-<li>假如我们的答案是12345，我们在ans数组里存它的时候就是这个样子：<br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582693567222.png" alt="" loading="lazy"></li>
-<li>所以我们要从ans[5]位向ans[1]位进行输出，在计算时我们已经求出了答案长度asl，这里asl=5，输出代码：</li>
+<li>看到题解都是桶排，我就介绍一种不是桶排的方法。<strong>记得点赞啊！</strong></li>
+<li><a href="https://www.luogu.com.cn/blog/yx20070829/solution-cf656g">博客食用更佳</a></li>
+<li>首先就是用字符串组来横向读入整个输入，然后再竖向扫描，每一轮扫描记一下数，再更新ans的值。</li>
+<li>读入如：</li>
 </ul>
-<pre><code class="language-cpp">for(int i=asl;i&gt;0;i--)printf(&quot;%d&quot;,ans[i]);
+<pre><code>NNNY
+----&gt;这样每一行用一个字符串读入
+NNNY
+----&gt;
+NYYN
+----&gt;
+YNNN
+----&gt;
+NYYY
+----&gt;
 </code></pre>
 <ul>
-<li>结束</li>
+<li>扫描：</li>
 </ul>
+<pre><code>N|N|N|Y|
+N|N|N|Y|
+N|Y|Y|N|
+Y|N|N|N|
+N|Y|Y|Y|
+↓ ↓ ↓ ↓
+每次访问所有字符串的第i个元素，并累加，最后看是否超过题里的T
+</code></pre>
+<ul>
+<li>接下来看看代码：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;　
+using namespace std;
+int n,m,a,ans;//n是列数，m是行数，a是题中的T，ans是答案
+string s[11];//用来存输入的字符串
+int main()
+{
+	scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;a);
+	for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i];//读入，每一行的输入，字符串真是方便得很
+	for(int i=0;i&lt;=m;i++)//枚举列数，因为是竖向扫描
+	{
+		int x=0;//这一行'Y'的个数
+		for(int j=1;j&lt;=n;j++)//枚举每一个字符串第i个位置的字符
+		{
+			if(s[j][i]=='Y')x++;//判断是否是'Y'
+		}
+		if(x&gt;=a)ans++;//如果超过a就累加答案
+	}
+	printf(&quot;%d&quot;,ans);//输出
+    return 0;//华丽结束
+}
+</code></pre>
+<h4 id="求过awa">求过awa</h4>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Eon_Starlight]]></title>
-        <id>https://eon-starlight.github.io/Blog/eon-de-keng/</id>
-        <link href="https://eon-starlight.github.io/Blog/eon-de-keng/">
+        <title type="html"><![CDATA[LuoguP3383 【【模板】线性筛素数】【题解/笔记】]]></title>
+        <id>https://eon-starlight.github.io/Blog/luogup3383-mo-ban-xian-xing-shai-su-shu-ti-jie-bi-ji/</id>
+        <link href="https://eon-starlight.github.io/Blog/luogup3383-mo-ban-xian-xing-shai-su-shu-ti-jie-bi-ji/">
         </link>
-        <updated>2020-02-25T11:45:59.000Z</updated>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://eon-starlight.github.io/Blog//post-images/1582631686318.png" alt="" loading="lazy"></figure>
-<h1 id="游荡于oi界于柴圈">游荡于oi界于柴圈……</h1>
-<h1 id="一名蒻得很的蒟蒻">一名蒻得很的蒟蒻</h1>
-<h1 id="菜是原罪啥都不会">菜是原罪，啥都不会</h1>
-<p><img src="https://eon-starlight.github.io/Blog//post-images/1582631744762.png" alt="" loading="lazy"><br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582631753259.png" alt="" loading="lazy"><br>
-###链接区域<br>
-<a href="https://www.bilibili.com/"><img src="https://eon-starlight.github.io/Blog//post-images/1582675935541.png" alt="" loading="lazy"></a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[高精度读入【笔记】]]></title>
-        <id>https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/</id>
-        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">
-        </link>
-        <updated>2020-02-25T11:06:43.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="高精度基本算法的通用读入">高精度基本算法的通用读入</h3>
+        <updated>2020-03-30T00:56:31.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P3383">题目链接</a></p>
 <ul>
-<li>在普通实数变量型无法实现大数据运算时，我们会采用高精度来实现计算，我们利用数组来存一个数。要存多大的数就开多大的数组，因为我们用数组的每一个空间来存每一位数的那个数字。</li>
-<li>假如要存12345这个数，要把它放进a[6]数组.我们把5放进a[1]，4放进a[2]，…，1放进a[5]。如下：</li>
+<li>
+<h3 id="一道算区间素数的题题意简单">一道算区间素数的题，题意简单。</h3>
+</li>
+<li>
+<h4 id="首先我们介绍几种没有优化的筛素数">首先我们介绍几种没有优化的筛素数。</h4>
+</li>
+<li>第一种，无优化枚举，直接枚举到n-1：</li>
 </ul>
-<pre><code class="language-cpp">a[1]=5;
-a[2]=4;
-a[3]=3
-a[4]=2;
-a[5]=1;
-//现在a数组变成了{5,4,3,2,1}，a[i]就表示第i位
+<pre><code class="language-cpp">using namespace std;
+//询问一个数，输出一行Yes或No。 
+int n;
+bool pd=1; 
+int main()
+{
+   	scanf(&quot;%d&quot;,&amp;n);
+   	if(n==1)printf(&quot;No&quot;);//特判。
+   	for(int i=2;i&lt;n;i++)//枚举到n前一个。
+   	{
+		if(n%i==0)
+		{
+			pd=0;
+			break;
+		}
+	}
+	if(pd)printf(&quot;Yes&quot;);
+	else printf(&quot;No&quot;);
+    return 0;
+    QWQ;
+}
 </code></pre>
 <ul>
-<li>我们不会把数字一位一位读入，而是选择用字符串一口气读入，然后就可以知道长度（.size()）就可以用for循环将字符串转成数组。</li>
-<li>先度入：</li>
+<li>稍稍给它优化优化，枚举到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mi>n</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.23972em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span></span></span></span> ：</li>
 </ul>
-<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
+<pre><code class="language-cpp">using namespace std;
+//询问一个数，输出一行Yes或No。 
+int n; 
+bool pd=1; 
+int main()
+{
+   	scanf(&quot;%d&quot;,&amp;n);
+   	if(n==1)printf(&quot;No&quot;);//特判。
+   	for(int i=2;i*i&lt;=n;i++)//这次枚举到根号n，因为根号n到n之间的数都不是n的因数
+   	{
+		if(n%i==0)
+		{
+			pd=0;
+			break;
+		}
+	}
+	if(pd)printf(&quot;Yes&quot;);
+	else printf(&quot;No&quot;);
+    return 0;
+    QWQ;
+}
 </code></pre>
 <ul>
-<li>然后这理解释一下字符串如何转数组。这里就以12345为例，先看一下代码：</li>
+<li>但是这样按照此题要判断多次，时间复杂度肯定很高是不行滴 <s>试过</s></li>
+<li>接下来再介绍两种高效率区间筛：</li>
+<li>第一种埃拉托斯特尼筛法：</li>
+<li>当需要求某一区间[2,n]内的所有素数时，可以从2开始，对于当前素数p，将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>p</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">p^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>后所有p的倍数筛去每次找到下一个没有被筛到的数就是一个素数。</li>
+<li>代码实现：</li>
 </ul>
-<pre><code class="language-cpp">	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
-	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
+<pre><code class="language-cpp">using namespace std;
+//可以筛出1~x区间中的素数，n次询问，每次询问输出一行Yes或No。 
+int x,n; 
+bool pd[100000001];//1表示非素数，0表示素数。 
+int main()
+{
+   	scanf(&quot;%d%d&quot;,&amp;x,&amp;n);
+   	pd[1]=1;
+   	for(int i=2;i&lt;=x;i++)
+   	{
+		if(!pd[i])//如果没被筛到，就确定为素数，并继续筛
+		{
+			for(int j=2;j*i&lt;=x;j++)pd[j*i]=1;
+		}   
+	}
+	for(int i=1;i&lt;=n;i++)
+	{
+		int h;
+		scanf(&quot;%d&quot;,&amp;h);
+		if(pd[h])printf(&quot;No\n&quot;);
+		else printf(&quot;Yes\n&quot;);
+	}
+    return 0;
+    QWQ;
+}
 </code></pre>
 <ul>
-<li>为什么要这么写，我们来模拟一下。</li>
-<li>首先i=ax.size()也就是五，然后将ax[ax.size-1]也就是ax[1]放进a[i]，具体怎么将字符转成数字百度一下，这里不解释了…<br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582629115230.png" alt="" loading="lazy"></li>
-<li>i=4的情况<br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582629127550.png" alt="" loading="lazy"></li>
-<li>3<br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582629136157.png" alt="" loading="lazy"></li>
-<li>2<br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582629158832.png" alt="" loading="lazy"></li>
-<li>1，像这样大家就应该明白了，已经很清晰了。<br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582629172963.png" alt="" loading="lazy"></li>
-<li>读入就是这样，代码：</li>
+<li>当然，这种算法并不完美，因为有些合数会被筛两次。</li>
+<li>比如6，会被2筛一次，3一次，为了优化，我们用出了另一种更高效率的区间筛</li>
+<li>欧拉筛！！！（这不是程序代码~）</li>
 </ul>
-<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
-	for(int i=ax.size();i&gt;0;i--)a[i]=ax[ax.size()-i]-'0';
-	for(int i=bx.size();i&gt;0;i--)b[i]=bx[bx.size()-i]-'0';
+<pre><code class="language-cpp">using namespace std;
+//可以筛出1~x区间中的素数，n次询问，每次询问输出一行Yes或No。 
+int x,n,ans[100000001],sum; 
+bool pd[100000001];//1表示非素数，0表示素数。 
+int main()
+{
+   	scanf(&quot;%d%d&quot;,&amp;x,&amp;n);
+   	pd[1]=1;
+   	for(int i=2;i&lt;=x;i++)
+   	{
+		if(!pd[i])ans[++sum]=i;//发现素数就记下来
+		for(int j=1;j&lt;=sum&amp;&amp;i*ans[j]&lt;=x;j++)
+		{
+			pd[ans[j]*i]=1;//标记
+			if(i%ans[j]==0)break;//关键于此，保证每个合数只被筛一次
+		}
+	}
+	for(int i=1;i&lt;=n;i++)
+	{
+		int h;
+		scanf(&quot;%d&quot;,&amp;h);
+		if(!pd[h])printf(&quot;Yes&quot;);
+		else printf(&quot;No&quot;);
+	}
+    return 0;
+    QWQ;
+}
 </code></pre>
+<ul>
+<li>某个合数a=p*b，其中p是a中最小的质数，b为a/p。a要在快筛时被筛掉需要满足其被a中最小的质数p乘以剩下的数b筛掉。每个合数只被它最大的且不等于他自身的因数筛掉。</li>
+<li>我们来模拟一下康康：<br>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/kie7vmvj.png" alt="QAQ" loading="lazy"></li>
+<li>最后放一下完整AC代码，不要抄。</li>
+<li>有注释的：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;set&gt;
+#include&lt;queue&gt;
+#include&lt;deque&gt;
+#include&lt;limits&gt;
+#define QWQ while(1)puts(&quot;(〃'▽'〃)&quot;)
+using namespace std; 
+int x/*范围*/,n/*询问次数*/,ans[100000001]/*ans存素数*/,sum/*sum是筛出来的素数个数，用于存素数方便的的。*/ ;
+bool pd[100000001];//1表示非素数，0表示素数。 
+int main()
+{
+   	scanf(&quot;%d%d&quot;,&amp;x,&amp;n);
+   	pd[1]=1;//特别标一下，好像没用…… 
+   	for(int i=2;i&lt;=x;i++)//循环找素数并筛 
+   	{
+		if(!pd[i])ans[++sum]=i;//发现素数，塞入数组，嘤！ 
+		for(int j=1;j&lt;=sum&amp;&amp;i*ans[j]&lt;=x;j++)//开始筛 
+		{
+			pd[ans[j]*i]=1;//标记 
+			if(i%ans[j]==0)break;//保证每个合数只筛一次 
+		}
+	}
+	for(int i=1;i&lt;=n;i++)
+	{
+		int h;
+		scanf(&quot;%d&quot;,&amp;h);
+		printf(&quot;%d\n&quot;,ans[h]);//输出，因为ans正好存的素数 
+	}
+    return 0;//华丽的结束 
+    QWQ;//QWQ 
+}
+</code></pre>
+<h3 id="不懂的可以依照代码再钻研一下总的来说不难">不懂的可以依照代码再钻研一下，总的来说不难。</h3>
 ]]></content>
     </entry>
 </feed>

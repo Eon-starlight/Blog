@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Eon_Starlight | Eon_Starlight&#39;s blog</title>
+<title>Luogu（CF搬运）CF656G 【You&#39;re a Professional】【题解】 | Eon_Starlight&#39;s blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,15 +18,15 @@
 
 
 
-    <meta name="description" content="
-游荡于oi界于柴圈……
-一名蒻得很的蒟蒻
-菜是原罪，啥都不会
+    <meta name="description" content="题目链接
 
+看到题解都是桶排，我就介绍一种不是桶排的方法。记得点赞啊！
+博客食用更佳
+首先就是用字符串组来横向读入整个输入，然后再竖向扫描，每一轮扫描记一下数，再更新ans的值。
+读入如：
 
-###链接区域
-
-..." />
+NNNY
+----&gt;这样每一行用一个字符串..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -80,27 +80,73 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Eon_Starlight</h2>
-            <div class="post-date">2020-02-25</div>
+            <h2 class="post-title">Luogu（CF搬运）CF656G 【You&#39;re a Professional】【题解】</h2>
+            <div class="post-date">2020-03-30</div>
             
             <div class="post-content" v-pre>
-              <figure data-type="image" tabindex="1"><img src="https://eon-starlight.github.io/Blog//post-images/1582631686318.png" alt="" loading="lazy"></figure>
-<h1 id="游荡于oi界于柴圈">游荡于oi界于柴圈……</h1>
-<h1 id="一名蒻得很的蒟蒻">一名蒻得很的蒟蒻</h1>
-<h1 id="菜是原罪啥都不会">菜是原罪，啥都不会</h1>
-<p><img src="https://eon-starlight.github.io/Blog//post-images/1582631744762.png" alt="" loading="lazy"><br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582631753259.png" alt="" loading="lazy"><br>
-###链接区域<br>
-<a href="https://www.bilibili.com/"><img src="https://eon-starlight.github.io/Blog//post-images/1582675935541.png" alt="" loading="lazy"></a></p>
+              <p><a href="https://www.luogu.com.cn/problem/CF656G">题目链接</a></p>
+<ul>
+<li>看到题解都是桶排，我就介绍一种不是桶排的方法。<strong>记得点赞啊！</strong></li>
+<li><a href="https://www.luogu.com.cn/blog/yx20070829/solution-cf656g">博客食用更佳</a></li>
+<li>首先就是用字符串组来横向读入整个输入，然后再竖向扫描，每一轮扫描记一下数，再更新ans的值。</li>
+<li>读入如：</li>
+</ul>
+<pre><code>NNNY
+----&gt;这样每一行用一个字符串读入
+NNNY
+----&gt;
+NYYN
+----&gt;
+YNNN
+----&gt;
+NYYY
+----&gt;
+</code></pre>
+<ul>
+<li>扫描：</li>
+</ul>
+<pre><code>N|N|N|Y|
+N|N|N|Y|
+N|Y|Y|N|
+Y|N|N|N|
+N|Y|Y|Y|
+↓ ↓ ↓ ↓
+每次访问所有字符串的第i个元素，并累加，最后看是否超过题里的T
+</code></pre>
+<ul>
+<li>接下来看看代码：</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;　
+using namespace std;
+int n,m,a,ans;//n是列数，m是行数，a是题中的T，ans是答案
+string s[11];//用来存输入的字符串
+int main()
+{
+	scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;a);
+	for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i];//读入，每一行的输入，字符串真是方便得很
+	for(int i=0;i&lt;=m;i++)//枚举列数，因为是竖向扫描
+	{
+		int x=0;//这一行'Y'的个数
+		for(int j=1;j&lt;=n;j++)//枚举每一个字符串第i个位置的字符
+		{
+			if(s[j][i]=='Y')x++;//判断是否是'Y'
+		}
+		if(x&gt;=a)ans++;//如果超过a就累加答案
+	}
+	printf(&quot;%d&quot;,ans);//输出
+    return 0;//华丽结束
+}
+</code></pre>
+<h4 id="求过awa">求过awa</h4>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">
+                <a href="https://eon-starlight.github.io/Blog/luogup3383-mo-ban-xian-xing-shai-su-shu-ti-jie-bi-ji/">
                   <h3 class="post-title">
-                    高精度读入【笔记】
+                    LuoguP3383 【【模板】线性筛素数】【题解/笔记】
                   </h3>
                 </a>
               </div>
