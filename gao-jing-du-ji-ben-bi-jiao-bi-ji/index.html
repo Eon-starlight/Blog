@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Eon_Starlight | Eon_Starlight&#39;s blog</title>
+<title>高精度基本比较【笔记】 | Eon_Starlight&#39;s blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,15 +18,18 @@
 
 
 
-    <meta name="description" content="
-游荡于oi界于柴圈……
-一名蒻得很的蒟蒻
-菜是原罪，啥都不会
+    <meta name="description" content="极水的一篇……
+
+不包括小数、负数（所以没难度）
+读入不解释
+
+cin&gt;&gt;ax&gt;&gt;bx;
+//读入两个字符串
 
 
-###链接区域
+比较不解释：
 
-..." />
+if((ax&lt;bx&amp;&amp;ax.size()==bx.size())..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -80,27 +83,39 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Eon_Starlight</h2>
-            <div class="post-date">2020-02-25</div>
+            <h2 class="post-title">高精度基本比较【笔记】</h2>
+            <div class="post-date">2020-03-30</div>
             
             <div class="post-content" v-pre>
-              <figure data-type="image" tabindex="1"><img src="https://eon-starlight.github.io/Blog//post-images/1582631686318.png" alt="" loading="lazy"></figure>
-<h1 id="游荡于oi界于柴圈">游荡于oi界于柴圈……</h1>
-<h1 id="一名蒻得很的蒟蒻">一名蒻得很的蒟蒻</h1>
-<h1 id="菜是原罪啥都不会">菜是原罪，啥都不会</h1>
-<p><img src="https://eon-starlight.github.io/Blog//post-images/1582631744762.png" alt="" loading="lazy"><br>
-<img src="https://eon-starlight.github.io/Blog//post-images/1582631753259.png" alt="" loading="lazy"><br>
-###链接区域<br>
-<a href="https://www.bilibili.com/"><img src="https://eon-starlight.github.io/Blog//post-images/1582675935541.png" alt="" loading="lazy"></a></p>
+              <h5 id="极水的一篇">极水的一篇……</h5>
+<ul>
+<li>不包括小数、负数（所以没难度）</li>
+<li>读入不解释</li>
+</ul>
+<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
+//读入两个字符串
+</code></pre>
+<ul>
+<li>比较不解释：</li>
+</ul>
+<pre><code class="language-cpp">if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())pd=1;
+</code></pre>
+<ul>
+<li>输出不解释：</li>
+</ul>
+<pre><code class="language-cpp">if(pd==1)cout&gt;&gt;bx;
+else cout&gt;&gt;ax;
+//不是这么简单我还写它干嘛……
+</code></pre>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">
+                <a href="https://eon-starlight.github.io/Blog/gao-jing-du-zong-he-bi-ji/">
                   <h3 class="post-title">
-                    高精度读入【笔记】
+                    高精度综合【笔记】
                   </h3>
                 </a>
               </div>

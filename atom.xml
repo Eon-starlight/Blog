@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://eon-starlight.github.io/Blog/</id>
     <title>Eon_Starlight&apos;s blog</title>
-    <updated>2020-03-30T00:08:21.833Z</updated>
+    <updated>2020-03-30T00:45:45.644Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://eon-starlight.github.io/Blog/"/>
     <link rel="self" href="https://eon-starlight.github.io/Blog/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://eon-starlight.github.io/Blog/images/avatar.png</logo>
     <icon>https://eon-starlight.github.io/Blog/favicon.ico</icon>
     <rights>All rights reserved 2020, Eon_Starlight&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[高精度基本比较【笔记】]]></title>
+        <id>https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-bi-jiao-bi-ji/</id>
+        <link href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-bi-jiao-bi-ji/">
+        </link>
+        <updated>2020-03-30T00:45:11.000Z</updated>
+        <content type="html"><![CDATA[<h5 id="极水的一篇">极水的一篇……</h5>
+<ul>
+<li>不包括小数、负数（所以没难度）</li>
+<li>读入不解释</li>
+</ul>
+<pre><code class="language-cpp">cin&gt;&gt;ax&gt;&gt;bx;
+//读入两个字符串
+</code></pre>
+<ul>
+<li>比较不解释：</li>
+</ul>
+<pre><code class="language-cpp">if((ax&lt;bx&amp;&amp;ax.size()==bx.size())||ax.size()&lt;bx.size())pd=1;
+</code></pre>
+<ul>
+<li>输出不解释：</li>
+</ul>
+<pre><code class="language-cpp">if(pd==1)cout&gt;&gt;bx;
+else cout&gt;&gt;ax;
+//不是这么简单我还写它干嘛……
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[高精度综合【笔记】]]></title>
         <id>https://eon-starlight.github.io/Blog/gao-jing-du-zong-he-bi-ji/</id>
@@ -22,34 +50,34 @@
 <h2 id="读入不解释">读入不解释</h2>
 </li>
 <li>
-<h4 id="读入"><a href="">读入}</a></h4>
+<h4 id="读入"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-du-ru-bi-ji/">读入</a></h4>
 </li>
 <li>
 <h2 id="四则运算">四则运算</h2>
 </li>
 <li>
-<h4 id="读入-2"><a href="">读入}</a></h4>
+<h4 id="高精度加法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/">高精度加法</a></h4>
 </li>
 <li>
-<h4 id="读入-3"><a href="">读入}</a></h4>
+<h4 id="高精度减法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/">高精度减法</a></h4>
 </li>
 <li>
-<h4 id="读入-4"><a href="">读入}</a></h4>
+<h4 id="高精度乘法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-cheng-fa-bi-ji/">高精度乘法</a></h4>
 </li>
 <li>
-<h4 id="读入-5"><a href="">读入}</a></h4>
+<h4 id="高精度除法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-chu-fa-bi-ji/">高精度除法</a></h4>
 </li>
 </ul>
 <h6 id="赠品大雾">赠品（大雾</h6>
 <ul>
 <li>
-<h4 id="读入-6"><a href="">读入}</a></h4>
+<h4 id="高精度比较"><a href="">高精度比较</a></h4>
 </li>
 <li>
 <h2 id="输出不解释">输出不解释</h2>
 </li>
 <li>
-<h4 id="读入-7"><a href="">读入}</a></h4>
+<h4 id="输出"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-shu-chu-bi-ji/">输出</a></h4>
 </li>
 </ul>
 ]]></content>
