@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://eon-starlight.github.io/Blog/</id>
     <title>Eon_Starlight&apos;s blog</title>
-    <updated>2020-03-30T02:20:08.925Z</updated>
+    <updated>2020-03-30T02:31:31.121Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://eon-starlight.github.io/Blog/"/>
     <link rel="self" href="https://eon-starlight.github.io/Blog/atom.xml"/>
@@ -10,6 +10,31 @@
     <logo>https://eon-starlight.github.io/Blog/images/avatar.png</logo>
     <icon>https://eon-starlight.github.io/Blog/favicon.ico</icon>
     <rights>All rights reserved 2020, Eon_Starlight&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[STL整合]]></title>
+        <id>https://eon-starlight.github.io/Blog/stl-zheng-he/</id>
+        <link href="https://eon-starlight.github.io/Blog/stl-zheng-he/">
+        </link>
+        <updated>2020-03-30T02:27:22.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h4 id="vector"><a href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessvectorgreaterbi-ji/">vector</a></h4>
+</li>
+<li>
+<h4 id="set"><a href="https://eon-starlight.github.io/Blog/stl-zhong-de-lesssetgreaterbi-ji/">set</a></h4>
+</li>
+<li>
+<h4 id="queue"><a href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessqueuegreaterbi-ji/">queue</a></h4>
+</li>
+<li>
+<h4 id="stack"><a href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessstackgreaterbi-ji/">stack</a></h4>
+</li>
+<li>
+<h4 id="map"><a href="https://eon-starlight.github.io/Blog/stl-zhong-de-lessmapgreaterbi-ji/">map</a></h4>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[高精度整合]]></title>
         <id>https://eon-starlight.github.io/Blog/gao-jing-du-zheng-he/</id>
@@ -28,10 +53,10 @@
 <h2 id="四则运算">四则运算</h2>
 </li>
 <li>
-<h4 id="高精度加法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/">{高精度加法</a></h4>
+<h4 id="高精度加法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jia-fa-bi-ji/">高精度加法</a></h4>
 </li>
 <li>
-<h4 id="高精度减法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/">{高精度减法</a></h4>
+<h4 id="高精度减法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-jian-fa-bi-ji/">高精度减法</a></h4>
 </li>
 <li>
 <h4 id="高精度乘法"><a href="https://eon-starlight.github.io/Blog/gao-jing-du-ji-ben-cheng-fa-bi-ji/">高精度乘法</a></h4>
@@ -667,68 +692,6 @@ int main()
     return 0;//程序拜拜
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Luogu（CF搬运）CF656G 【You're a Professional】【题解】]]></title>
-        <id>https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf656g-youre-a-professional-ti-jie/</id>
-        <link href="https://eon-starlight.github.io/Blog/luogucf-ban-yun-cf656g-youre-a-professional-ti-jie/">
-        </link>
-        <updated>2020-03-30T00:58:10.000Z</updated>
-        <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/CF656G">题目链接</a></p>
-<ul>
-<li>看到题解都是桶排，我就介绍一种不是桶排的方法。<strong>记得点赞啊！</strong></li>
-<li><a href="https://www.luogu.com.cn/blog/yx20070829/solution-cf656g">博客食用更佳</a></li>
-<li>首先就是用字符串组来横向读入整个输入，然后再竖向扫描，每一轮扫描记一下数，再更新ans的值。</li>
-<li>读入如：</li>
-</ul>
-<pre><code>NNNY
-----&gt;这样每一行用一个字符串读入
-NNNY
-----&gt;
-NYYN
-----&gt;
-YNNN
-----&gt;
-NYYY
-----&gt;
-</code></pre>
-<ul>
-<li>扫描：</li>
-</ul>
-<pre><code>N|N|N|Y|
-N|N|N|Y|
-N|Y|Y|N|
-Y|N|N|N|
-N|Y|Y|Y|
-↓ ↓ ↓ ↓
-每次访问所有字符串的第i个元素，并累加，最后看是否超过题里的T
-</code></pre>
-<ul>
-<li>接下来看看代码：</li>
-</ul>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;　
-using namespace std;
-int n,m,a,ans;//n是列数，m是行数，a是题中的T，ans是答案
-string s[11];//用来存输入的字符串
-int main()
-{
-	scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;a);
-	for(int i=1;i&lt;=n;i++)cin&gt;&gt;s[i];//读入，每一行的输入，字符串真是方便得很
-	for(int i=0;i&lt;=m;i++)//枚举列数，因为是竖向扫描
-	{
-		int x=0;//这一行'Y'的个数
-		for(int j=1;j&lt;=n;j++)//枚举每一个字符串第i个位置的字符
-		{
-			if(s[j][i]=='Y')x++;//判断是否是'Y'
-		}
-		if(x&gt;=a)ans++;//如果超过a就累加答案
-	}
-	printf(&quot;%d&quot;,ans);//输出
-    return 0;//华丽结束
-}
-</code></pre>
-<h4 id="求过awa">求过awa</h4>
 ]]></content>
     </entry>
 </feed>
